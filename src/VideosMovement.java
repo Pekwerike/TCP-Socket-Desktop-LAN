@@ -14,8 +14,7 @@ public class VideosMovement {
         // write the length and name of each video to the clientSocket DataOutputStream
         for(int i = 0; i < videoCollection.length; i++){
             clientSocketDOS.writeLong(videoCollection[i].length());
-            clientSocketDOS.flush();
-            clientSocketDOS.writeChars(videoCollection[i].getName());
+            clientSocketDOS.writeUTF(videoCollection[i].getName());
         }
 
         // write the bytes of each video to the clientSocket DataOutputStream
