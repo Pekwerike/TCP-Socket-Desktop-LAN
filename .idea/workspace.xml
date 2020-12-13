@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VideosMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VideosMovement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,5 +119,9 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="0" y="0" key="new project wizard/0.0.1463.783@0.0.1463.783" timestamp="1607858420566" />
+    <state x="305" y="173" key="run.anything.popup" timestamp="1607884953998">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state x="305" y="173" key="run.anything.popup/0.0.1463.783@0.0.1463.783" timestamp="1607884953998" />
   </component>
 </project>
