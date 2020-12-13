@@ -16,16 +16,17 @@ public class MainApplication {
 
         FileInputStream imageFileIS = new FileInputStream("C:\\Users\\Prosper's PC\\Pictures\\Screenshot_20200723_153336_com.prosperekwerike.pulsar.jpg");
         FileInputStream secondImageFileIS = new FileInputStream("C:\\Users\\Prosper's PC\\Pictures\\Screenshot_20200723_153307_com.prosperekwerike.pulsar.jpg");
-        byte[][] buffers = {imageFileIS.readAllBytes(), secondImageFileIS.readAllBytes()};
-        FileInputStream[] arrayOfIS = {imageFileIS, secondImageFileIS};
+        FileInputStream thirdImageFileIS = new FileInputStream("C:\\Users\\Prosper's PC\\Pictures\\Screenshot_20200723_153414_com.prosperekwerike.pulsar.jpg");
+        byte[][] buffers = {imageFileIS.readAllBytes(), secondImageFileIS.readAllBytes(), thirdImageFileIS.readAllBytes()};
 
-        clientDOS.writeInt(2);
+
+        clientDOS.writeInt(buffers.length);
         //send the file lengthst to the client
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < buffers.length; i++) {
             clientDOS.writeLong(buffers[i].length);
         }
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < buffers.length; i++) {
             byte[] buffer = buffers[i];
             clientDOS.write(buffer);
         }
