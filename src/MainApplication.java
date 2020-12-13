@@ -35,26 +35,6 @@ public class MainApplication {
 
     }
 
-    private static void transferSingleImage(Socket clientOS, DataOutputStream clientDOS) throws IOException {
-        FileInputStream imageFileIS = new FileInputStream("C:\\Users\\Prosper's PC\\Pictures\\Screenshot_20200723_153336_com.prosperekwerike.pulsar.jpg");
-        FileInputStream secondImageFileIS = new FileInputStream("C:\\Users\\Prosper's PC\\Pictures\\Screenshot_20200723_153307_com.prosperekwerike.pulsar.jpg");
-        FileInputStream[] arrayOfIS = {imageFileIS, secondImageFileIS};
-
-
-        //transfer image to client
-
-        DataInputStream imageFileDIS = new DataInputStream(imageFileIS);
-
-        byte[] buffer = imageFileDIS.readAllBytes();
-
-        long imageLength = buffer.length;
-        clientDOS.writeLong(imageLength);
-        clientDOS.write(buffer);
-
-        imageFileIS.close();
-        clientOS.close();
-    }
-
     private static File createFile() {
         return new File("C:\\Users\\Prosper's PC\\Pictures\\serverc" + System.currentTimeMillis() + ".jpg");
     }
