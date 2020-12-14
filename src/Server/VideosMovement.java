@@ -29,6 +29,7 @@ public class VideosMovement {
             FileInputStream videoFileInputStream = new FileInputStream(videoCollection[i]);
             byte[] buffer = videoFileInputStream.readAllBytes();
             clientSocketDOS.write(buffer);
+            videoFileInputStream.close();
         }
 
         clientSocketDOS.close();

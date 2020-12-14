@@ -7,7 +7,6 @@ import java.net.Socket;
 public class MainApplication {
 
     public static void main(String[] args) throws IOException {
-        //transferSingleImage();
         ServerSocket serverSocket = new ServerSocket(8085);
         Socket client = serverSocket.accept();
         System.out.println("Connected to a client socket");
@@ -20,7 +19,8 @@ public class MainApplication {
         File[] videoCollection = {video1, video2, video3, video4};
 
         VideosMovement videosMovement = new VideosMovement(client);
-        videosMovement.transferVideo(videoCollection);
+        //videosMovement.transferVideo(videoCollection);
+        videosMovement.receiveVideos();
 
     }
 

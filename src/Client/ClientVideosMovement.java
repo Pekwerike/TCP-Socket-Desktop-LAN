@@ -32,6 +32,7 @@ public class ClientVideosMovement {
             videoInputStream.close();
         }
 
+        System.out.println(String.format("Sent %d videos to server", videoCollection.length));
         serverDOS.close();
     }
 
