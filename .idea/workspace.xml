@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerSocket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TCPSocketDesktopLAN.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +29,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Client" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -64,53 +63,6 @@
     <configuration name="VideosMovement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Server.VideosMovement" />
       <module name="TCPSocketDesktopLAN" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="TCPSocketDesktopLAN" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="TCPSocketDesktopLAN" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -157,22 +109,22 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1463.783@0.0.1463.783" timestamp="1607942563978" />
-    <state width="1408" height="163" key="GridCell.Tab.0.bottom" timestamp="1607942806852">
+    <state width="1408" height="163" key="GridCell.Tab.0.bottom" timestamp="1607942944404">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="163" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1607942806852" />
-    <state width="1408" height="163" key="GridCell.Tab.0.center" timestamp="1607942806852">
+    <state width="1408" height="163" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1607942944404" />
+    <state width="1408" height="163" key="GridCell.Tab.0.center" timestamp="1607942944404">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="163" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1607942806852" />
-    <state width="1408" height="163" key="GridCell.Tab.0.left" timestamp="1607942806852">
+    <state width="1408" height="163" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1607942944404" />
+    <state width="1408" height="163" key="GridCell.Tab.0.left" timestamp="1607942944404">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="163" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1607942806852" />
-    <state width="1408" height="163" key="GridCell.Tab.0.right" timestamp="1607942806852">
+    <state width="1408" height="163" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1607942944404" />
+    <state width="1408" height="163" key="GridCell.Tab.0.right" timestamp="1607942944404">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="163" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1607942806852" />
+    <state width="1408" height="163" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1607942944404" />
     <state width="1408" height="230" key="GridCell.Tab.1.bottom" timestamp="1607865869479">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
