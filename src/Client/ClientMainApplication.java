@@ -10,8 +10,8 @@ public class ClientMainApplication {
         Socket server = new Socket("192.168.43.190", 8085);
         System.out.println("Connected to server");
 
-        ClientVideosMovement videosMovement = new ClientVideosMovement();
-        videosMovement.receiveVideo(server);
+        ClientVideosMovement videosMovement = new ClientVideosMovement(server);
+        videosMovement.receiveVideo();
 
     }
 

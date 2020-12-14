@@ -4,9 +4,18 @@ import java.io.*;
 import java.net.Socket;
 
 public class ClientVideosMovement {
+    private Socket mServer;
 
-    void receiveVideo(Socket server) throws IOException {
-        InputStream serverIS = server.getInputStream();
+    public ClientVideosMovement(Socket server){
+        this.mServer = server;
+    }
+
+    void transferVideo(File[] videoCollection){
+
+    }
+
+    void receiveVideo() throws IOException {
+        InputStream serverIS = mServer.getInputStream();
         BufferedInputStream serverBIS = new BufferedInputStream(serverIS);
         DataInputStream serverDIS = new DataInputStream(serverBIS);
 

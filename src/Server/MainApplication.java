@@ -19,8 +19,8 @@ public class MainApplication {
         File video4 = getVideoFile("L1 51 Adding The ImageView SC 1");
         File[] videoCollection = {video1, video2, video3, video4};
 
-        VideosMovement videosMovement = new VideosMovement();
-        videosMovement.transferVideo(videoCollection, client);
+        VideosMovement videosMovement = new VideosMovement(client);
+        videosMovement.transferVideo(videoCollection);
 
     }
 

@@ -4,9 +4,14 @@ import java.io.*;
 import java.net.Socket;
 
 public class VideosMovement {
+    private Socket mClientSocket;
 
-    void transferVideo(File[] videoCollection, Socket clientSocket) throws IOException {
-        OutputStream clientSocketOS = clientSocket.getOutputStream();
+    public VideosMovement(Socket clientSocket){
+        this.mClientSocket = clientSocket;
+    }
+
+    void transferVideo(File[] videoCollection) throws IOException {
+        OutputStream clientSocketOS = mClientSocket.getOutputStream();
         BufferedOutputStream clientSocketBOS = new BufferedOutputStream(clientSocketOS);
         DataOutputStream clientSocketDOS = new DataOutputStream(clientSocketBOS);
 
