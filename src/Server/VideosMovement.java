@@ -48,9 +48,17 @@ public class VideosMovement {
 
         // read out the bytes for each video sent by the client
         for(int i = 0; i < videoCount; i++){
-            MainApplication.
+            FileOutputStream receivedFileOS = new FileOutputStream(createFile(videosName[i]));
+            byte[] buffer = new byte[videosLength[i]];
+            clientSocketDIS.read(buffer, 0, videosLength[i]);
+            receivedFileOS.write(buffer);
+            receivedFileOS.close();
         }
+        System.out.println(String.format("Server received %d videos", videoCount));
     }
 
+    private static File createFile(String videoName) {
+        return new File("C:\\Users\\Prosper's PC\\Pictures\\" + videoName + ".mp4");
+    }
 
 }
