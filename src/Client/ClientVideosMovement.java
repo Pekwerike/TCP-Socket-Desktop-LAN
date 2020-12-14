@@ -10,8 +10,21 @@ public class ClientVideosMovement {
         this.mServer = server;
     }
 
-    void transferVideo(File[] videoCollection){
+    void transferVideo(File[] videoCollection) throws IOException {
+        OutputStream serverOS = mServer.getOutputStream();
+        BufferedOutputStream serverBOS = new BufferedOutputStream(serverOS);
+        DataOutputStream serverDOS = new DataOutputStream(serverBOS);
 
+        // write the amount of videos to send
+        serverDOS.writeInt(videoCollection.length);
+
+        // write the length and name of each video
+        for(int i = 0; i < videoCollection.length; i++){
+            serverDOS.writeLong(videoCollection[i].length());
+            serverDOS.writeUTF(videoCollection[i].getName());
+        }
+
+        // write the byte of each video to the Server DataOutputStream
     }
 
     void receiveVideo() throws IOException {

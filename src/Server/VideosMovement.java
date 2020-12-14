@@ -34,8 +34,8 @@ public class VideosMovement {
         clientSocketDOS.close();
     }
 
-    void receiveVideos(Socket clientSocket) throws IOException {
-        InputStream clientSocketIS = clientSocket.getInputStream();
+    void receiveVideos() throws IOException {
+        InputStream clientSocketIS = mClientSocket.getInputStream();
         BufferedInputStream clientSocketBIS = new BufferedInputStream(clientSocketIS);
         DataInputStream clientSocketDIS = new DataInputStream(clientSocketBIS);
 

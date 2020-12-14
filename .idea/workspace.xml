@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientVideosMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientVideosMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/VideosMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/VideosMovement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,10 +109,10 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="224" y="0" key="#Project_Structure/0.0.1463.783@0.0.1463.783" timestamp="1607858249119" />
-    <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607942563978">
+    <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607944410269">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1463.783@0.0.1463.783" timestamp="1607942563978" />
+    <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1463.783@0.0.1463.783" timestamp="1607944410269" />
     <state width="1408" height="163" key="GridCell.Tab.0.bottom" timestamp="1607942944404">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
