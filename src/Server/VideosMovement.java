@@ -29,7 +29,28 @@ public class VideosMovement {
         clientSocketDOS.close();
     }
 
-    void receiveVideos(){
+    void receiveVideos(Socket clientSocket) throws IOException {
+        InputStream clientSocketIS = clientSocket.getInputStream();
+        BufferedInputStream clientSocketBIS = new BufferedInputStream(clientSocketIS);
+        DataInputStream clientSocketDIS = new DataInputStream(clientSocketBIS);
 
+        // read the amount of videos sent by the client
+        int videoCount = clientSocketDIS.readInt();
+
+        int[] videosLength = new int[videoCount];
+        String[] videosName = new String[videoCount];
+
+        // read the length and name for each video sent by the client
+        for(int i = 0; i < videoCount; i++){
+           videosLength[i] = (int) clientSocketDIS.readLong();
+           videosName[i] = clientSocketDIS.readUTF();
+        }
+
+        // read out the bytes for each video sent by the client
+        for(int i = 0; i < videoCount; i++){
+            MainApplication.
+        }
     }
+
+
 }
