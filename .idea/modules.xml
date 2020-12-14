@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ServerSocket.iml" filepath="$PROJECT_DIR$/ServerSocket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TCPSocketDesktopLAN.iml" filepath="$PROJECT_DIR$/TCPSocketDesktopLAN.iml" />
     </modules>
   </component>
 </project>
