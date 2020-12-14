@@ -2,6 +2,7 @@ package Client;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class ClientVideosMovement {
     private Socket mServer;
@@ -21,14 +22,16 @@ public class ClientVideosMovement {
         // write the length and name of each video
         for(int i = 0; i < videoCollection.length; i++){
             serverDOS.writeLong(videoCollection[i].length());
+            System.out.println(videoCollection[i].length());
             serverDOS.writeUTF(videoCollection[i].getName());
+            System.out.println(videoCollection[i].getName());
         }
 
         // write the byte of each video to the Server DataOutputStream
         for(int i = 0; i < videoCollection.length; i++){
             FileInputStream videoInputStream = new FileInputStream(videoCollection[i]);
             byte[] buffer = videoInputStream.readAllBytes();
-            serverDOS.write(buffer);
+            serverDOS.write(buffer, 0, buffer.length);
             videoInputStream.close();
         }
 
