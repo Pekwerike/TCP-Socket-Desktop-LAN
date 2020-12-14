@@ -25,6 +25,14 @@ public class ClientVideosMovement {
         }
 
         // write the byte of each video to the Server DataOutputStream
+        for(int i = 0; i < videoCollection.length; i++){
+            FileInputStream videoInputStream = new FileInputStream(videoCollection[i]);
+            byte[] buffer = videoInputStream.readAllBytes();
+            serverDOS.write(buffer);
+            videoInputStream.close();
+        }
+
+        serverDOS.close();
     }
 
     void receiveVideo() throws IOException {
