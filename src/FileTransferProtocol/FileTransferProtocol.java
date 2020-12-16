@@ -26,10 +26,35 @@ public class FileTransferProtocol {
 
         // write the bytes of each file to the socketDOS
         for (int i = 0; i < fileCollection.length; i++) {
-           FileInputStream fileIS = new FileInputStream(fileCollection[i]);
-           byte[] buffer = fileIS.readAllBytes();
-           socketDOS.write(buffer);
-           fileIS.close();
+            FileInputStream fileIS = new FileInputStream(fileCollection[i]);
+            byte[] buffer = fileIS.readAllBytes();
+            socketDOS.write(buffer);
+            fileIS.close();
         }
+    }
+
+    public void receiveFile() throws IOException {
+        InputStream socketIS = mSocket.getInputStream();
+        BufferedInputStream socketBIS = new BufferedInputStream(socketIS);
+        DataInputStream socketDIS = new DataInputStream(socketBIS);
+        while (true) {
+            // read the number of files sent
+            int filesCount = socketDIS.readInt();
+            int[] filesLength = new int[filesCount];
+            String[] filesName = new String[filesCount];
+
+            if (filesCount > 0) {
+                // read the size and name of each file sent
+                for (int i = 0; i < filesCount; i++) {
+                    filesLength[i] = (int) socketDIS.readLong();
+                    filesName[i] = socketDIS.readUTF();
+                }
+            }
+
+        }
+    }
+
+    private static File createFile(String fileName) {
+        return new File("C:\\Users\\Prosper's PC\\Pictures\\" + fileName + ".mp4");
     }
 }
