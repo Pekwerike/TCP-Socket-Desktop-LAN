@@ -52,20 +52,21 @@ public class FileTransferProtocol {
 
                 // read out the bytes for each file sent
                 for(int i = 0; i < filesCount; i++){
-                    FileInputStream filesIs = new FileInputStream(createFile(filesName[i]));
-                    int bytesLeft = filesLength[i];
+                    FileOutputStream fileOS = new FileOutputStream(createFile(filesName[i]));
+                    int bytesUnread = filesLength[i];
                     byte[] buffer = new byte[1_000_000];
 
-                    while(bytesLeft > 0){
-                        int readBytes = socketDIS.read(buffer, 0, Math.min(bytesLeft, buffer.length));
-                        if(readBytes == -1) {
+                    while(bytesUnread > 0){
+                        int bytesRead = socketDIS.read(buffer, 0, Math.min(bytesUnread, buffer.length));
+                        if(bytesRead == -1) {
                             //End of file reached
                             break;
                         }
-                        bytesLeft = bytesLeft - readBytes;
-
+                        fileOS.write(buffer, 0, bytesRead);
+                        bytesUnread = bytesUnread - bytesRead;
                     }
                 }
+                break;
             }
 
         }
