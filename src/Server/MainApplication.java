@@ -1,5 +1,7 @@
 package Server;
 
+import FileTransferProtocol.FileTransferProtocol;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -26,11 +28,11 @@ public class MainApplication {
             File video4 = getVideoFile("L1 51 Adding The ImageView SC 1");
             File[] videoCollection = {video1, video2, video3, video4};
 
-            VideosMovement videosMovement = new VideosMovement(client);
+            FileTransferProtocol fileTransferProtocol = new FileTransferProtocol(client);
             //pause reading the receiveVideos function from calling, so the client will be able to write out
             // all the videos first
             try {
-                videosMovement.transferVideo(videoCollection);
+                fileTransferProtocol.receiveFile();
                // videosMovement.receiveVideos();
             } catch (IOException e) {
                 e.printStackTrace();
