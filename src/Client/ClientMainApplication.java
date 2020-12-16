@@ -1,5 +1,7 @@
 package Client;
 
+import FileTransferProtocol.FileTransferProtocol;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
@@ -8,12 +10,12 @@ public class ClientMainApplication {
 
     public static void main(String[] args) throws IOException {
         Runnable runnable = () -> {
-           /* Socket server = null;
+            Socket server = null;
             try {
-                server = new Socket("192.168.43.190", 8085);
+                server = new Socket("192.168.43.191", 8085);
             } catch (IOException e) {
                 e.printStackTrace();
-            }*/
+            }
             System.out.println("Connected to server");
 
             File video1 = getVideoFile("ANDK L1 01 IntroVideo");
@@ -26,10 +28,10 @@ public class ClientMainApplication {
             File[] videoCollection = {video1, video2, video3};
 
 
-            ClientVideosMovement videosMovement = new ClientVideosMovement();
+            FileTransferProtocol ftp = new FileTransferProtocol(server);
             try {
                 //videosMovement.transferVideo(videoCollection);
-                videosMovement.receiveVideo();
+                ftp.receiveFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }

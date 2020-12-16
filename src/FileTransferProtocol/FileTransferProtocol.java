@@ -51,14 +51,14 @@ public class FileTransferProtocol {
                 }
 
                 // read out the bytes for each file sent
-                for(int i = 0; i < filesCount; i++){
+                for (int i = 0; i < filesCount; i++) {
                     FileOutputStream fileOS = new FileOutputStream(createFile(filesName[i]));
                     int bytesUnread = filesLength[i];
                     byte[] buffer = new byte[1_000_000];
 
-                    while(bytesUnread > 0){
+                    while (bytesUnread > 0) {
                         int bytesRead = socketDIS.read(buffer, 0, Math.min(bytesUnread, buffer.length));
-                        if(bytesRead == -1) {
+                        if (bytesRead == -1) {
                             //End of file reached
                             break;
                         }
@@ -73,6 +73,6 @@ public class FileTransferProtocol {
     }
 
     private static File createFile(String fileName) {
-        return new File("C:\\Users\\Prosper's PC\\Pictures\\" + fileName + ".mp4");
+        return new File("C:\\Users\\Prosper's PC\\Pictures\\" + fileName);
     }
 }

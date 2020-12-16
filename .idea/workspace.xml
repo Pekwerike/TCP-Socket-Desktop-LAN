@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/FileTransferProtocol.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/FileTransferProtocol.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientVideosMovement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/FileTransferProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/FileTransferProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/ImagesMovement.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/VideosMovement.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +46,7 @@
       <recent name="C:\Users\Prosper's PC\Desktop\Princeton Algorithms\ServerSocket\src\Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainApplication">
+  <component name="RunManager" selected="Application.ClientMainApplication">
     <configuration name="ClientMainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.ClientMainApplication" />
       <module name="TCPSocketDesktopLAN" />
@@ -72,8 +76,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainApplication" />
         <item itemvalue="Application.ClientMainApplication" />
+        <item itemvalue="Application.MainApplication" />
         <item itemvalue="Application.VideosMovement" />
       </list>
     </recent_temporary>
@@ -112,26 +116,30 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1463.783@0.0.1463.783" timestamp="1607944410269" />
+    <state x="400" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608145921704">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state x="400" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1463.783@0.0.1463.783" timestamp="1608145921704" />
     <state x="462" y="94" key="FileChooserDialogImpl" timestamp="1607973746860">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="462" y="94" key="FileChooserDialogImpl/0.0.1463.783@0.0.1463.783" timestamp="1607973746860" />
-    <state width="1408" height="254" key="GridCell.Tab.0.bottom" timestamp="1608117987406">
+    <state width="1408" height="254" key="GridCell.Tab.0.bottom" timestamp="1608146267828">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="254" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608117987406" />
-    <state width="1408" height="254" key="GridCell.Tab.0.center" timestamp="1608117987406">
+    <state width="1408" height="254" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608146267828" />
+    <state width="1408" height="254" key="GridCell.Tab.0.center" timestamp="1608146267828">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="254" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608117987406" />
-    <state width="1408" height="254" key="GridCell.Tab.0.left" timestamp="1608117987406">
+    <state width="1408" height="254" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608146267828" />
+    <state width="1408" height="254" key="GridCell.Tab.0.left" timestamp="1608146267827">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="254" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608117987406" />
-    <state width="1408" height="254" key="GridCell.Tab.0.right" timestamp="1608117987406">
+    <state width="1408" height="254" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608146267827" />
+    <state width="1408" height="254" key="GridCell.Tab.0.right" timestamp="1608146267828">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="254" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608117987406" />
+    <state width="1408" height="254" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608146267828" />
     <state width="1408" height="230" key="GridCell.Tab.1.bottom" timestamp="1607970280178">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
@@ -148,6 +156,10 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state width="1408" height="230" key="GridCell.Tab.1.right/0.0.1463.783@0.0.1463.783" timestamp="1607970280178" />
+    <state x="377" y="180" key="com.intellij.ide.util.TipDialog" timestamp="1608145873602">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state x="377" y="180" key="com.intellij.ide.util.TipDialog/0.0.1463.783@0.0.1463.783" timestamp="1608145873602" />
     <state x="400" y="103" key="extract.method.dialog" timestamp="1607864037186">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
@@ -156,9 +168,13 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="0" y="0" key="new project wizard/0.0.1463.783@0.0.1463.783" timestamp="1607858420566" />
-    <state x="305" y="173" key="run.anything.popup" timestamp="1607884953998">
+    <state x="305" y="173" key="run.anything.popup" timestamp="1608146037102">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state x="305" y="173" key="run.anything.popup/0.0.1463.783@0.0.1463.783" timestamp="1607884953998" />
+    <state x="305" y="173" key="run.anything.popup/0.0.1463.783@0.0.1463.783" timestamp="1608146037102" />
+    <state x="310" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1608146190673">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state x="310" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1463.783@0.0.1463.783" timestamp="1608146190673" />
   </component>
 </project>

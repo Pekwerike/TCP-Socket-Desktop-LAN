@@ -32,7 +32,7 @@ public class MainApplication {
             //pause reading the receiveVideos function from calling, so the client will be able to write out
             // all the videos first
             try {
-                fileTransferProtocol.receiveFile();
+                fileTransferProtocol.transferFile(videoCollection);
                // videosMovement.receiveVideos();
             } catch (IOException e) {
                 e.printStackTrace();
