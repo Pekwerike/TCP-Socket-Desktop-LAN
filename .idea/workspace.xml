@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientVideosMovement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientVideosMovement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/ImagesMovement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/ImagesMovement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientVideosMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientVideosMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ImagesMovement.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ImagesMovement.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/FileTransferProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/FileTransferProtocol.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +12,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
