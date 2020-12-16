@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class MainApplication {
 
-    public static void main(String[] args) throws IOException {
+   public static void main(String[] args) throws IOException {
         Runnable runnable = () -> {
             ServerSocket serverSocket = null;
             Socket client = null;

@@ -8,22 +8,25 @@ public class ClientMainApplication {
 
     public static void main(String[] args) throws IOException {
         Runnable runnable = () -> {
-            Socket server = null;
+           /* Socket server = null;
             try {
                 server = new Socket("192.168.43.190", 8085);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
             System.out.println("Connected to server");
 
-            File video1 = getVideoFile("148 Introduction to the DOM");
-            File video2 = getVideoFile("149 Defining the DOM");
-            File video3 = getVideoFile("150 Select and Manipulate");
-            File video4 = getVideoFile("152 Important Selector Methods");
-            File[] videoCollection = {video1, video2, video3, video4};
+            File video1 = getVideoFile("ANDK L1 01 IntroVideo");
+            File video2 = getVideoFile("L1 03 Dice Roller HSASC V4 V2");
+            File video3 = getVideoFile("L1 06 Creating The Dice Roller Project HS-SC");
+      /*      File video4 = getVideoFile("L1 51 Adding The ImageView SC 1");
+            File video5 = getVideoFile("L1 67 Recap HS-A");
+            File video6 = getVideoFile("L1 55 Student Interview HS");
+            File video7 = getVideoFile("L1 26 Student Interview HS");*/
+            File[] videoCollection = {video1, video2, video3};
 
 
-            ClientVideosMovement videosMovement = new ClientVideosMovement(server);
+            ClientVideosMovement videosMovement = new ClientVideosMovement();
             try {
                 //videosMovement.transferVideo(videoCollection);
                 videosMovement.receiveVideo();
@@ -39,6 +42,6 @@ public class ClientMainApplication {
 
 
     private static File getVideoFile(String name){
-        return new File("C:\\Users\\Prosper's PC\\Desktop\\the web developer bootcamp\\13 DOM Manipulation\\" + name +".mp4");
+        return new File("C:\\Users\\Prosper's PC\\Desktop\\ANROID DEVELOPMENT COURSE\\LESSON 1\\" + name +".mp4");
     }
 }

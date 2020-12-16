@@ -5,10 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientVideosMovement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientVideosMovement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/VideosMovement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/VideosMovement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/ImagesMovement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/ImagesMovement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientVideosMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientVideosMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/ImagesMovement.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ImagesMovement.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +37,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/ServerSocket" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -117,26 +117,26 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1463.783@0.0.1463.783" timestamp="1607944410269" />
-    <state x="462" y="94" key="FileChooserDialogImpl" timestamp="1607971761482">
+    <state x="462" y="94" key="FileChooserDialogImpl" timestamp="1607973746860">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state x="462" y="94" key="FileChooserDialogImpl/0.0.1463.783@0.0.1463.783" timestamp="1607971761482" />
-    <state width="1408" height="254" key="GridCell.Tab.0.bottom" timestamp="1607972032337">
+    <state x="462" y="94" key="FileChooserDialogImpl/0.0.1463.783@0.0.1463.783" timestamp="1607973746860" />
+    <state width="1408" height="254" key="GridCell.Tab.0.bottom" timestamp="1608038011579">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="254" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1607972032337" />
-    <state width="1408" height="254" key="GridCell.Tab.0.center" timestamp="1607972032337">
+    <state width="1408" height="254" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608038011579" />
+    <state width="1408" height="254" key="GridCell.Tab.0.center" timestamp="1608038011571">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="254" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1607972032337" />
-    <state width="1408" height="254" key="GridCell.Tab.0.left" timestamp="1607972032337">
+    <state width="1408" height="254" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608038011571" />
+    <state width="1408" height="254" key="GridCell.Tab.0.left" timestamp="1608038011571">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="254" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1607972032337" />
-    <state width="1408" height="254" key="GridCell.Tab.0.right" timestamp="1607972032337">
+    <state width="1408" height="254" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608038011571" />
+    <state width="1408" height="254" key="GridCell.Tab.0.right" timestamp="1608038011579">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="254" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1607972032337" />
+    <state width="1408" height="254" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608038011579" />
     <state width="1408" height="230" key="GridCell.Tab.1.bottom" timestamp="1607970280178">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
