@@ -26,7 +26,10 @@ public class FileTransferProtocol {
 
         // write the bytes of each file to the socketDOS
         for (int i = 0; i < fileCollection.length; i++) {
-
+           FileInputStream fileIS = new FileInputStream(fileCollection[i]);
+           byte[] buffer = fileIS.readAllBytes();
+           socketDOS.write(buffer);
+           fileIS.close();
         }
     }
 }
