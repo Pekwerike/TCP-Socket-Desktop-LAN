@@ -20,9 +20,20 @@ public class FileTransferProtocol {
 
         String[] filesName = new String[filesCount];
         int[] filesLength = new int[filesCount];
-        // read out the length and anme of each file received
-        for(int i = 0; i < filesCount; i++){
 
+        // read out the length and name of each file received
+        for(int i = 0; i < filesCount; i++){
+            filesName[i] = socketDIS.readUTF();
+            filesLength[i] = (int) socketDIS.readLong();
+        }
+
+        // read out the bytes of each file received
+
+        for(int i = 0; i < filesCount; i++){
+            String fileName = filesName[i];
+            if(fileName.startsWith("Directory")){
+                // file is a directory
+            }
         }
     }
 
