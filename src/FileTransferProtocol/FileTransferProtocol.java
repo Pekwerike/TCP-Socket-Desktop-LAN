@@ -22,17 +22,17 @@ public class FileTransferProtocol {
         int[] filesLength = new int[filesCount];
 
         // read out the length and name of each file received
-        for(int i = 0; i < filesCount; i++){
+        for (int i = 0; i < filesCount; i++) {
             filesName[i] = socketDIS.readUTF();
             filesLength[i] = (int) socketDIS.readLong();
         }
 
         // read out the bytes of each file received
 
-        for(int i = 0; i < filesCount; i++){
+        for (int i = 0; i < filesCount; i++) {
             String fileName = filesName[i];
-            if(fileName.startsWith("Directory")){
-                // file is a directory
+            if (fileName.startsWith("Directory")) {
+                // file is a directory, fetch all files and save
             }
         }
     }
@@ -64,17 +64,17 @@ public class FileTransferProtocol {
         }
 
         // write the bytes of the files to transfer
-        for(int i = 0; i < fileCollection.length; i++){
-            if(fileCollection[i].isDirectory()){
+        for (int i = 0; i < fileCollection.length; i++) {
+            if (fileCollection[i].isDirectory()) {
                 // write the bytes of each file in the directory to the socketDOS
                 File[] filesInFolder = fileCollection[i].listFiles();
-                for(int j = 0; j < filesInFolder.length; j++){
+                for (int j = 0; j < filesInFolder.length; j++) {
                     FileInputStream fileIS = new FileInputStream(filesInFolder[j]);
                     byte[] buffer = fileIS.readAllBytes();
                     socketDOS.write(buffer);
                     fileIS.close();
                 }
-            }else {
+            } else {
                 // File is not a folder, so write the bytes of the file directly
                 FileInputStream fileIS = new FileInputStream(fileCollection[i]);
                 byte[] buffer = fileIS.readAllBytes();
@@ -149,5 +149,11 @@ public class FileTransferProtocol {
 
     private static File createFile(String fileName) {
         return new File("C:\\Users\\Prosper's PC\\Pictures\\" + fileName);
+    }
+
+    private static File saveFileInFolder(String folderName, String fileName) {
+        File folder = new File("C:\\Users\\Prosper's PC\\Pictures\\" + folderName);
+        if (!folder.isDirectory()) folder.mkdirs();
+        return new File(folder, fileName);
     }
 }
