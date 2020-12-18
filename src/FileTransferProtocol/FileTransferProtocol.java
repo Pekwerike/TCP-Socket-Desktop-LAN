@@ -10,6 +10,22 @@ public class FileTransferProtocol {
         this.mSocket = socket;
     }
 
+    public void optimizedReceiveFile() throws IOException {
+        InputStream socketIS = mSocket.getInputStream();
+        BufferedInputStream socketBIS = new BufferedInputStream(socketIS);
+        DataInputStream socketDIS = new DataInputStream(socketBIS);
+
+        // get the number of files received
+        int filesCount = socketDIS.readInt();
+
+        String[] filesName = new String[filesCount];
+        int[] filesLength = new int[filesCount];
+        // read out the length and anme of each file received
+        for(int i = 0; i < filesCount; i++){
+
+        }
+    }
+
     public void optimizedTransferFile(File[] fileCollection) throws IOException {
         OutputStream socketOS = mSocket.getOutputStream();
         BufferedOutputStream socketBOS = new BufferedOutputStream(socketOS);
@@ -55,8 +71,6 @@ public class FileTransferProtocol {
                 fileIS.close();
             }
         }
-
-
 
     }
 
