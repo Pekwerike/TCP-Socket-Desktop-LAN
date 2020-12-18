@@ -18,22 +18,45 @@ public class FileTransferProtocol {
         // write the number of files sent
         socketDOS.writeInt(fileCollection.length);
 
-        for(int i = 0; i < fileCollection.length; i++){
-
-            if(fileCollection[i].isDirectory()){
-               File[] filesInFolder = fileCollection[i].listFiles();
-               // write the name and length of all files in this folder
-                for(int j = 0; j < filesInFolder.length; j++){
+        // write the name and length of the files to transfer
+        for (int i = 0; i < fileCollection.length; i++) {
+            if (fileCollection[i].isDirectory()) {
+                //write the name of the directory to the socketDOS
+                socketDOS.writeUTF("Directory" + fileCollection[i].getName());
+                File[] filesInFolder = fileCollection[i].listFiles();
+                // write the name and length of all files in this folder
+                for (int j = 0; j < filesInFolder.length; j++) {
                     socketDOS.writeLong(filesInFolder[j].length());
                     socketDOS.writeUTF(filesInFolder[j].getName());
                 }
-                // file is a directory
-            }else {
+            } else {
                 // file is not a directory, hence, write the name and length of the file to the socketDOS
                 socketDOS.writeLong(fileCollection[i].length());
                 socketDOS.writeUTF(fileCollection[i].getName());
             }
         }
+
+        // write the bytes of the files to transfer
+        for(int i = 0; i < fileCollection.length; i++){
+            if(fileCollection[i].isDirectory()){
+                // write the bytes of each file in the directory to the socketDOS
+                File[] filesInFolder = fileCollection[i].listFiles();
+                for(int j = 0; j < filesInFolder.length; j++){
+                    FileInputStream fileIS = new FileInputStream(filesInFolder[j]);
+                    byte[] buffer = fileIS.readAllBytes();
+                    socketDOS.write(buffer);
+                    fileIS.close();
+                }
+            }else {
+                // File is not a folder, so write the bytes of the file directly
+                FileInputStream fileIS = new FileInputStream(fileCollection[i]);
+                byte[] buffer = fileIS.readAllBytes();
+                socketDOS.write(buffer);
+                fileIS.close();
+            }
+        }
+
+
 
     }
 
