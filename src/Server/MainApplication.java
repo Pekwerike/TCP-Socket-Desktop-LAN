@@ -48,4 +48,8 @@ public class MainApplication {
     private static File getVideoFile(String name){
         return new File("C:\\Users\\Prosper's PC\\Desktop\\ANROID DEVELOPMENT COURSE\\LESSON 1\\" + name +".mp4");
     }
+
+    private static File getFolder(String name){
+       return new File("C:\\Users\\Prosper's PC\\Desktop\\KOTLIN BOOTCAMP");
+    }
 }
