@@ -10,6 +10,19 @@ public class FileTransferProtocol {
         this.mSocket = socket;
     }
 
+    public void optimizedTransferFile(File[] fileCollection) throws IOException {
+        OutputStream socketOS = mSocket.getOutputStream();
+        BufferedOutputStream socketBOS = new BufferedOutputStream(socketOS);
+        DataOutputStream socketDOS = new DataOutputStream(socketBOS);
+
+        for(int i = 0; i < fileCollection.length; i++){
+            if(fileCollection[i].isDirectory()){
+
+            }
+        }
+
+    }
+
     public void transferFile(File[] fileCollection) throws IOException {
         OutputStream socketOS = mSocket.getOutputStream();
         BufferedOutputStream socketBOS = new BufferedOutputStream(socketOS);
