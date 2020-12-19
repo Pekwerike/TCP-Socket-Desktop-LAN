@@ -27,17 +27,10 @@ public class OptimizedFileTransferProtocol {
 
                 // read out the length and name of each file received
                 for (int i = 0; i < filesCount; i++) {
-                    try {
-                        filesName[i] = socketDIS.readUTF();
-                        System.out.print(filesName[i]);
-                        if (filesName[i] == "") {
-                            filesName[i] = String.format("%d", System.currentTimeMillis());
-                        }
-                    } catch (UTFDataFormatException malformedInput) {
-                        filesName[i] = String.format("%d", System.currentTimeMillis());
-                    }
                     filesLength[i] = (int) socketDIS.readLong();
                     System.out.println(filesLength[i]);
+                    filesName[i] = socketDIS.readUTF();
+                    System.out.print(filesName[i]);
                 }
 
                 // read out the bytes of each file received
@@ -110,11 +103,13 @@ public class OptimizedFileTransferProtocol {
                 for (int j = 0; j < filesInFolder.length; j++) {
                     filesLength.add(filesInFolder[j].length());
                     filesName.add(filesInFolder[j].getName());
-                    System.out.println(filesInFolder[j].length());
-                    socketDOS.writeUTF(filesInFolder[j].getName());
-                    System.out.println(filesInFolder[j].getName());
                 }
             }
+        }
+
+        for (int i = 0; i < filesLength.size(); i++) {
+            socketDOS.writeLong(filesLength.get(i));
+            socketDOS.writeUTF(filesName.get(i));
         }
 
         // write the bytes of the files to transfer
