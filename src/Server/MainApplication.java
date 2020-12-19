@@ -1,12 +1,10 @@
 package Server;
 
-import Client.OptimizedFileTransferProtocol;
-import FileTransferProtocol.FileTransferProtocol;
+import FileTransferProtocol.OptimizedFileTransferProtocol;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class MainApplication {
 

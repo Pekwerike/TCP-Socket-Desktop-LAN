@@ -1,6 +1,6 @@
 package Client;
 
-import FileTransferProtocol.FileTransferProtocol;
+import FileTransferProtocol.OptimizedFileTransferProtocol;
 
 import java.io.File;
 import java.io.IOException;

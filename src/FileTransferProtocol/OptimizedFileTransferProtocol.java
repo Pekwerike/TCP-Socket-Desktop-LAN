@@ -1,4 +1,4 @@
-package Client;
+package FileTransferProtocol;
 
 import java.io.*;
 import java.net.Socket;
