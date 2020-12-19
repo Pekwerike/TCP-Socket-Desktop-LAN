@@ -4,6 +4,11 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
+/**
+ * A generalized file transfer protocol, to transfer and receive multiple files and folders in a single socket stream
+ * Algorithm created by P.C. Ekwerike
+ **/
+
 public class OptimizedFileTransferProtocol {
     private Socket mSocket;
 
@@ -30,7 +35,7 @@ public class OptimizedFileTransferProtocol {
                     filesLength[i] = (int) socketDIS.readLong();
                     filesName[i] = socketDIS.readUTF();
 
-                    if(filesName[i].startsWith("Directory")){
+                    if (filesName[i].startsWith("Directory")) {
                         /**if file is a directory, read out the number (int) of files in the directory from the
                          * socketDIS**/
                         filesInFolderCount.add(socketDIS.readInt());
@@ -74,7 +79,7 @@ public class OptimizedFileTransferProtocol {
                             // move i to the next index of the filesCount
                             i = j;
                         }
-                    }else {
+                    } else {
                         // not directory, save file in base directory
                         FileOutputStream fileOS = new FileOutputStream(createFile(fileName));
                         int unreadBytes = fileLength;
@@ -130,7 +135,7 @@ public class OptimizedFileTransferProtocol {
                     socketDOS.writeLong(filesInFolder[j].length());
                     socketDOS.writeUTF(filesInFolder[j].getName());
                 }
-            }else {
+            } else {
                 // not directory
                 socketDOS.writeLong(fileCollection[i].length());
                 socketDOS.writeUTF(fileCollection[i].getName());
@@ -148,7 +153,7 @@ public class OptimizedFileTransferProtocol {
                     socketDOS.write(buffer);
                     fileIS.close();
                 }
-            }else {
+            } else {
                 // not directory
                 FileInputStream fileIS = new FileInputStream(fileCollection[i]);
                 byte[] buffer = fileIS.readAllBytes();
@@ -164,6 +169,7 @@ public class OptimizedFileTransferProtocol {
         if (!folder.exists()) folder.mkdirs();
         return new File(folder, fileName);
     }
+
     private static File createFile(String fileName) {
         return new File("C:\\Users\\Prosper's PC\\Pictures\\" + fileName);
     }
