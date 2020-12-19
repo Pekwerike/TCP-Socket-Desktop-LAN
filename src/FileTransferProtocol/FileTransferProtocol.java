@@ -15,46 +15,59 @@ public class FileTransferProtocol {
         BufferedInputStream socketBIS = new BufferedInputStream(socketIS);
         DataInputStream socketDIS = new DataInputStream(socketBIS);
 
-        // get the number of files received
-        int filesCount = socketDIS.readInt();
+        while (true) {
+            // get the number of files received
+            int filesCount = socketDIS.readInt();
 
-        String[] filesName = new String[filesCount];
-        int[] filesLength = new int[filesCount];
+            if(filesCount > 0) {
+                String[] filesName = new String[filesCount];
+                int[] filesLength = new int[filesCount];
 
-        // read out the length and name of each file received
-        for (int i = 0; i < filesCount; i++) {
-            filesName[i] = socketDIS.readUTF();
-            filesLength[i] = (int) socketDIS.readLong();
-        }
-
-        // read out the bytes of each file received
-
-        for (int i = 0; i < filesCount; i++) {
-            String fileName = filesName[i];
-            if (fileName.startsWith("Directory")) {
-                for (int j = i + 1; j < filesCount; j++) {
-                    if(filesName[j].startsWith("Directory")){
-                        // reached a new directory, so go back
-                        break;
-                    }
-                    // file is a directory, fetch all files and save them into the directory
-                    FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(fileName, filesName[j]));
-                    int unreadBytes = filesLength[j];
-                    byte[] buffer = null;
+                // read out the length and name of each file received
+                for (int i = 0; i < filesCount; i++) {
                     try{
-                        buffer = new byte[filesLength[j]];
-                    }catch (OutOfMemoryError outOfMemoryError){
-                        buffer = new byte[1_000_000];
+                        filesName[i] = socketDIS.readUTF();
+                    }catch (UTFDataFormatException malformedInput){
+                        filesName[i] = String.format("%d", System.currentTimeMillis());
                     }
-                    while(unreadBytes > 0){
-                        int readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
-                        fileOS.write(buffer, 0, readBytes);
-                        unreadBytes -= readBytes;
-                    }
-                    fileOS.close();
-                    // move i to the next index of the filesCount
-                    i = j;
+                    filesLength[i] = (int) socketDIS.readLong();
                 }
+
+                // read out the bytes of each file received
+                for (int i = 0; i < filesCount; i++) {
+                    String fileName = filesName[i];
+                    if (fileName.startsWith("Directory")) {
+                        fileName = fileName.substring(9);
+                        for (int j = i + 1; j < filesCount; j++) {
+                            if (filesName[j].startsWith("Directory")) {
+                                // reached a new directory, so go back
+                                break;
+                            }
+                            // file is a directory, fetch all files and save them into the directory
+                            FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(fileName, filesName[j]));
+                            int unreadBytes = filesLength[j];
+                            byte[] buffer;
+                            try {
+                                buffer = new byte[filesLength[j]];
+                            } catch (OutOfMemoryError outOfMemoryError) {
+                                buffer = new byte[1_000_000];
+                            }
+                            while (unreadBytes > 0) {
+                                int readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
+                                if (readBytes == -1) {
+                                    //End of file reached
+                                    break;
+                                }
+                                fileOS.write(buffer, 0, readBytes);
+                                unreadBytes -= readBytes;
+                            }
+                            fileOS.close();
+                            // move i to the next index of the filesCount
+                            i = j;
+                        }
+                    }
+                }
+               break;
             }
         }
     }
@@ -64,8 +77,15 @@ public class FileTransferProtocol {
         BufferedOutputStream socketBOS = new BufferedOutputStream(socketOS);
         DataOutputStream socketDOS = new DataOutputStream(socketBOS);
 
+        int temLength = fileCollection.length;
+        int filesCount = temLength;
+        for(int i = 0; i < temLength; i++){
+            if(fileCollection[i].isDirectory()){
+                filesCount += fileCollection[i].listFiles().length;
+            }
+        }
         // write the number of files sent
-        socketDOS.writeInt(fileCollection.length);
+        socketDOS.writeInt(filesCount);
 
         // write the name and length of the files to transfer
         for (int i = 0; i < fileCollection.length; i++) {

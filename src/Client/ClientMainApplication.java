@@ -12,7 +12,7 @@ public class ClientMainApplication {
         Runnable runnable = () -> {
             Socket server = null;
             try {
-                server = new Socket("192.168.43.190", 8085);
+                server = new Socket("192.168.43.190", 8086);
             } catch (IOException e) {
                 e.printStackTrace();
             }

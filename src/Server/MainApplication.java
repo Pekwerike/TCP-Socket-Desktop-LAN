@@ -53,6 +53,6 @@ public class MainApplication {
     }
 
     private static File getFolder(String name){
-       return new File("C:\\Users\\Prosper's PC\\Desktop\\KOTLIN BOOTCAMP");
+       return new File("C:\\Users\\Prosper's PC\\Desktop\\KOTLIN BOOTCAMP\\" + name);
     }
 }
