@@ -25,10 +25,11 @@ public class FileTransferProtocol {
 
                 // read out the length and name of each file received
                 for (int i = 0; i < filesCount; i++) {
-                    filesName[i] = socketDIS.readUTF();
-                }
-
-                for(int i = 0;i < filesLength.length; i++){
+                    try {
+                        filesName[i] = socketDIS.readUTF();
+                    }catch (UTFDataFormatException malformedInput){
+                        filesName[i] = String.format("%d", System.currentTimeMillis());
+                    }
                     filesLength[i] = (int) socketDIS.readLong();
                 }
 
@@ -37,7 +38,7 @@ public class FileTransferProtocol {
                     String fileName = filesName[i];
                     long fileLength = filesLength[i];
                     if (fileName.startsWith("Directory") && fileLength == 0) {
-                        fileName = fileName.substring(9);
+                        fileName = fileName.substring(8);
                         for (int j = i + 1; j < filesCount; j++) {
                             if (filesName[j].startsWith("Directory") && filesLength[j] == 0) {
                                 // reached a new directory, so go back
