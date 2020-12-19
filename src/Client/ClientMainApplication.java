@@ -12,7 +12,7 @@ public class ClientMainApplication {
         Runnable runnable = () -> {
             Socket server = null;
             try {
-                server = new Socket("192.168.43.191", 8085);
+                server = new Socket("192.168.43.190", 8085);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -31,7 +31,7 @@ public class ClientMainApplication {
             FileTransferProtocol ftp = new FileTransferProtocol(server);
             try {
                 //videosMovement.transferVideo(videoCollection);
-                ftp.receiveFile();
+                ftp.optimizedReceiveFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }

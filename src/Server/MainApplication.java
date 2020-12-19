@@ -14,7 +14,7 @@ public class MainApplication {
             ServerSocket serverSocket = null;
             Socket client = null;
             try {
-                serverSocket = new ServerSocket(8085);
+                serverSocket = new ServerSocket(8086);
                 client = serverSocket.accept();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -29,13 +29,13 @@ public class MainApplication {
             File video2 = getVideoFile("L1 03 Dice Roller HSASC V4 V2");
             File video3 = getVideoFile("L1 06 Creating The Dice Roller Project HS-SC");
             File video4 = getVideoFile("L1 51 Adding The ImageView SC 1");
-            File[] videoCollection = {video1, video2, video3, video4};
+            File[] videoCollection = {folder1, folder2};
 
             FileTransferProtocol fileTransferProtocol = new FileTransferProtocol(client);
             //pause reading the receiveVideos function from calling, so the client will be able to write out
             // all the videos first
             try {
-                fileTransferProtocol.transferFile(videoCollection);
+                fileTransferProtocol.optimizedTransferFile(videoCollection);
                // videosMovement.receiveVideos();
             } catch (IOException e) {
                 e.printStackTrace();
