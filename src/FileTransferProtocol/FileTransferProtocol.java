@@ -38,7 +38,7 @@ public class FileTransferProtocol {
                         break;
                     }
                     // file is a directory, fetch all files and save them into the directory
-                    File fileOS = saveFileInFolder(fileName, filesName[j]);
+                    FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(fileName, filesName[j]));
                     int unreadBytes = filesLength[j];
                     byte[] buffer = null;
                     try{
@@ -48,9 +48,10 @@ public class FileTransferProtocol {
                     }
                     while(unreadBytes > 0){
                         int readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
+                        fileOS.write(buffer, 0, readBytes);
                         unreadBytes -= readBytes;
                     }
-
+                    fileOS.close();
                     // move i to the next index of the filesCount
                     i = j;
                 }
