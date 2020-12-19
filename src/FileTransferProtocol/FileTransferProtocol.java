@@ -32,7 +32,28 @@ public class FileTransferProtocol {
         for (int i = 0; i < filesCount; i++) {
             String fileName = filesName[i];
             if (fileName.startsWith("Directory")) {
-                // file is a directory, fetch all files and save
+                for (int j = i + 1; j < filesCount; j++) {
+                    if(filesName[j].startsWith("Directory")){
+                        // reached a new directory, so go back
+                        break;
+                    }
+                    // file is a directory, fetch all files and save them into the directory
+                    File fileOS = saveFileInFolder(fileName, filesName[j]);
+                    int unreadBytes = filesLength[j];
+                    byte[] buffer = null;
+                    try{
+                        buffer = new byte[filesLength[j]];
+                    }catch (OutOfMemoryError outOfMemoryError){
+                        buffer = new byte[1_000_000];
+                    }
+                    while(unreadBytes > 0){
+                        int readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
+                        unreadBytes -= readBytes;
+                    }
+
+                    // move i to the next index of the filesCount
+                    i = j;
+                }
             }
         }
     }
