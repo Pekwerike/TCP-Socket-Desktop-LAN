@@ -24,13 +24,10 @@ public class OptimizedFileTransferProtocol {
                 String[] filesName = new String[filesCount];
                 int[] filesLength = new int[filesCount];
 
-
                 // read out the length and name of each file received
                 for (int i = 0; i < filesCount; i++) {
                     filesLength[i] = (int) socketDIS.readLong();
-                    System.out.println(filesLength[i]);
                     filesName[i] = socketDIS.readUTF();
-                    System.out.print(filesName[i]);
                 }
 
                 // read out the bytes of each file received
@@ -38,7 +35,7 @@ public class OptimizedFileTransferProtocol {
                     String fileName = filesName[i];
                     long fileLength = filesLength[i];
                     if (fileName.startsWith("Directory") && fileLength == 0) {
-                        fileName = fileName.substring(8);
+                        fileName = fileName.substring(9);
                         for (int j = i + 1; j < filesCount; j++) {
                             if (filesName[j].startsWith("Directory") && filesLength[j] == 0) {
                                 // reached a new directory, so go back
@@ -88,28 +85,21 @@ public class OptimizedFileTransferProtocol {
         }
         // write the number of files sent
         socketDOS.writeInt(filesCount);
-        ArrayList<String> filesName = new ArrayList<>();
-        ArrayList<Long> filesLength = new ArrayList<>();
 
         // write the name and length of the files to transfer
         for (int i = 0; i < fileCollection.length; i++) {
             if (fileCollection[i].isDirectory()) {
                 //write the name of the directory to the socketDOS
-                filesLength.add(0L);
-                filesName.add("Directory" + fileCollection[i].getName());
+                socketDOS.writeLong(0L);
+                socketDOS.writeUTF("Directory" + fileCollection[i].getName());
 
                 File[] filesInFolder = fileCollection[i].listFiles();
                 // write the name and length of all files in this folder
                 for (int j = 0; j < filesInFolder.length; j++) {
-                    filesLength.add(filesInFolder[j].length());
-                    filesName.add(filesInFolder[j].getName());
+                    socketDOS.writeLong(filesInFolder[j].length());
+                    socketDOS.writeUTF(filesInFolder[j].getName());
                 }
             }
-        }
-
-        for (int i = 0; i < filesLength.size(); i++) {
-            socketDOS.writeLong(filesLength.get(i));
-            socketDOS.writeUTF(filesName.get(i));
         }
 
         // write the bytes of the files to transfer
