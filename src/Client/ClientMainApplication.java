@@ -28,7 +28,7 @@ public class ClientMainApplication {
             File[] videoCollection = {video1, video2, video3};
 
 
-            FileTransferProtocol ftp = new FileTransferProtocol(server);
+            OptimizedFileTransferProtocol ftp = new OptimizedFileTransferProtocol(server);
             try {
                 //videosMovement.transferVideo(videoCollection);
                 ftp.optimizedReceiveFile();

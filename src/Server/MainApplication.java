@@ -1,5 +1,6 @@
 package Server;
 
+import Client.OptimizedFileTransferProtocol;
 import FileTransferProtocol.FileTransferProtocol;
 
 import java.io.*;
@@ -31,7 +32,7 @@ public class MainApplication {
             File video4 = getVideoFile("L1 51 Adding The ImageView SC 1");
             File[] videoCollection = {folder1, folder2};
 
-            FileTransferProtocol fileTransferProtocol = new FileTransferProtocol(client);
+            OptimizedFileTransferProtocol fileTransferProtocol = new OptimizedFileTransferProtocol(client);
             //pause reading the receiveVideos function from calling, so the client will be able to write out
             // all the videos first
             try {
