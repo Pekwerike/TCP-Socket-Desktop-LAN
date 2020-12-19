@@ -23,27 +23,33 @@ public class OptimizedFileTransferProtocol {
             if (filesCount > 0) {
                 String[] filesName = new String[filesCount];
                 int[] filesLength = new int[filesCount];
+                ArrayList<Integer> filesInFolderCount = new ArrayList<>();
 
                 // read out the length and name of each file received
                 for (int i = 0; i < filesCount; i++) {
                     filesLength[i] = (int) socketDIS.readLong();
                     filesName[i] = socketDIS.readUTF();
+                    if(filesName[i].startsWith("Directory")){
+                        filesInFolderCount.add(socketDIS.readInt());
+                    }
                 }
 
                 // read out the bytes of each file received
                 for (int i = 0; i < filesCount; i++) {
                     String fileName = filesName[i];
-                    long fileLength = filesLength[i];
+                    int fileLength = filesLength[i];
                     if (fileName.startsWith("Directory") && fileLength == 0) {
-                        fileName = fileName.substring(9);
-                        for (int j = i + 1; j < filesCount; j++) {
+                        fileName = fileName.substring(9); // remove the Directory string from the folder name
+                        int folderFileCount = filesInFolderCount.get(0);
+                        filesInFolderCount.remove(0);
+                        int newCount = i + folderFileCount + 1;
+                        for (int j = i + 1; j < newCount; j++) {
                             if (filesName[j].startsWith("Directory") && filesLength[j] == 0) {
                                 // reached a new directory, so go back
                                 break;
                             }
                             // file is a directory, fetch all files and save them into the directory
-                            File newFile = saveFileInFolder(fileName, filesName[j]);
-                            FileOutputStream fileOS = new FileOutputStream(newFile);
+                            FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(fileName, filesName[j]));
                             int unreadBytes = filesLength[j];
                             byte[] buffer;
                             try {
@@ -64,6 +70,26 @@ public class OptimizedFileTransferProtocol {
                             // move i to the next index of the filesCount
                             i = j;
                         }
+                    }else {
+                        // not directory
+                        FileOutputStream fileOS = new FileOutputStream(createFile(fileName));
+                        int unreadBytes = fileLength;
+                        byte[] buffer;
+                        try {
+                            buffer = new byte[fileLength];
+                        } catch (OutOfMemoryError outOfMemoryError) {
+                            buffer = new byte[1_000_000];
+                        }
+                        while (unreadBytes > 0) {
+                            int readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
+                            if (readBytes == -1) {
+                                //End of file reached
+                                break;
+                            }
+                            fileOS.write(buffer, 0, readBytes);
+                            unreadBytes -= readBytes;
+                        }
+                        fileOS.close();
                     }
                 }
                 break;
@@ -94,11 +120,16 @@ public class OptimizedFileTransferProtocol {
                 socketDOS.writeUTF("Directory" + fileCollection[i].getName());
 
                 File[] filesInFolder = fileCollection[i].listFiles();
+                socketDOS.writeInt(filesInFolder.length);
                 // write the name and length of all files in this folder
                 for (int j = 0; j < filesInFolder.length; j++) {
                     socketDOS.writeLong(filesInFolder[j].length());
                     socketDOS.writeUTF(filesInFolder[j].getName());
                 }
+            }else {
+                // not directory
+                socketDOS.writeLong(fileCollection[i].length());
+                socketDOS.writeUTF(fileCollection[i].getName());
             }
         }
 
@@ -113,6 +144,12 @@ public class OptimizedFileTransferProtocol {
                     socketDOS.write(buffer);
                     fileIS.close();
                 }
+            }else {
+                // not directory
+                FileInputStream fileIS = new FileInputStream(fileCollection[i]);
+                byte[] buffer = fileIS.readAllBytes();
+                socketDOS.write(buffer);
+                fileIS.close();
             }
         }
 
@@ -123,4 +160,8 @@ public class OptimizedFileTransferProtocol {
         if (!folder.exists()) folder.mkdirs();
         return new File(folder, fileName);
     }
+    private static File createFile(String fileName) {
+        return new File("C:\\Users\\Prosper's PC\\Pictures\\" + fileName);
+    }
+
 }

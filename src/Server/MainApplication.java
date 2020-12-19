@@ -30,7 +30,7 @@ public class MainApplication {
             File video2 = getVideoFile("L1 03 Dice Roller HSASC V4 V2");
             File video3 = getVideoFile("L1 06 Creating The Dice Roller Project HS-SC");
             File video4 = getVideoFile("L1 51 Adding The ImageView SC 1");
-            File[] videoCollection = {folder1, folder2};
+            File[] videoCollection = {folder1, folder2, video1, video2};
 
             OptimizedFileTransferProtocol fileTransferProtocol = new OptimizedFileTransferProtocol(client);
             //pause reading the receiveVideos function from calling, so the client will be able to write out
