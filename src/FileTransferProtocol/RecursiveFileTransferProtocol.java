@@ -22,10 +22,21 @@ public class RecursiveFileTransferProtocol {
         DataOutputStream socketDOS = new DataOutputStream(socketBOS);
 
         int filesCount = getFilesCount(folder);
-        // write the total number of files to transfer
+        // write the total number of files to transfer to the socketDOS
         socketDOS.writeInt(filesCount);
 
-        // write the name and length of each file inside the folder
+        // write the name and length of each file inside the folder to the socketDOS
+        ArrayList<File> allFilesInFolder = straightenFiles(folder);
+        for(int i = 0; i < allFilesInFolder.size(); i++){
+            File currentFile = allFilesInFolder.get(i);
+            if(currentFile.isDirectory()){
+                socketDOS.writeUTF("Directory"+ currentFile.getName());
+                socketDOS.writeLong(0l);
+            }else {
+                socketDOS.writeUTF(currentFile.getName());
+                socketDOS.writeLong(currentFile.length());
+            }
+        }
 
     }
 

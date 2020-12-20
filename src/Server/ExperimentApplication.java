@@ -15,7 +15,11 @@ public class ExperimentApplication {
         allFilesInFolder.forEach(new Consumer<File>() {
             @Override
             public void accept(File file) {
-                System.out.println(file.getName());
+                if(file.isDirectory()){
+                    System.out.println("Directory" + file.getName());
+                }else {
+                    System.out.println(file.getName());
+                }
             }
         });
 
