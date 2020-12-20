@@ -1,6 +1,7 @@
 package Server;
 
 import FileTransferProtocol.OptimizedFileTransferProtocol;
+import FileTransferProtocol.RecursiveFileTransferProtocol;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -30,10 +31,12 @@ public class MainApplication {
             File[] videoCollection = {folder1, folder2, video1, video2};
 
             OptimizedFileTransferProtocol fileTransferProtocol = new OptimizedFileTransferProtocol(client);
+            RecursiveFileTransferProtocol recursiveFileTransferProtocol = new RecursiveFileTransferProtocol(client);
             //pause reading the receiveVideos function from calling, so the client will be able to write out
             // all the videos first
             try {
-                fileTransferProtocol.optimizedTransferFile(videoCollection);
+                //fileTransferProtocol.optimizedTransferFile(videoCollection);
+                recursiveFileTransferProtocol.transferFiles(folder1);
                // videosMovement.receiveVideos();
             } catch (IOException e) {
                 e.printStackTrace();

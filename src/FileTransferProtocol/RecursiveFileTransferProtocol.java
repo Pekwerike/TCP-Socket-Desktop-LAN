@@ -43,7 +43,7 @@ public class RecursiveFileTransferProtocol {
             String currentFileName = filesName[i];
             int currentFileLength = filesLength[i];
 
-            if(currentFileName.startsWith("Directory")){
+            if(currentFileName.startsWith("Directory") && currentFileLength == 0){
                 String folderName = currentFileName;
                 // get the amount of file in this directory,
                 // then read and save into the directory the byte of each file under the directory
@@ -74,15 +74,63 @@ public class RecursiveFileTransferProtocol {
                         fileOS.write(buffer, 0, readBytes);
                         unreadBytes -= readBytes;
                     }
+                    fileOS.close();
                     // move to the next index
                     i = j;
                 }
 
             }
         }
-
-
     }
+
+    private static void saveNestedFiles(String folderName, ArrayList<File> files,
+                                        ArrayList<String> filesName, ArrayList<Integer> filesLength,
+                                        DataInputStream socketDIS, ArrayList<Integer> filesInFoldersCount) throws IOException {
+        for(int i = 0; i < files.size(); i++){
+            if(filesName.get(i).startsWith("Directory")){
+                String newFolderName = filesName.get(i);
+                // reached new folder, hence break out of this inner loop
+                int folderFilesCount = filesInFoldersCount.get(0);
+                filesInFoldersCount.remove(0);
+                ArrayList<File> filesInFolder = new ArrayList<>();
+                ArrayList<String> filesNameInFolder = new ArrayList<>();
+                ArrayList<Integer> filesLengthInFolder = new ArrayList<>();
+                for(int j = i + 1; j < i + folderFilesCount + 1; j++){
+                    filesInFolder.add(files.get(j));
+                    filesNameInFolder.add(filesName.get(j));
+                    filesLengthInFolder.add(filesLength.get(j));
+                    i = j;
+                }
+                saveNestedFiles(newFolderName,
+                        filesInFolder,
+                        filesNameInFolder,
+                        filesLengthInFolder,
+                        socketDIS,
+                        filesInFoldersCount);
+            }
+            FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(folderName, filesName.get(i)));
+            byte[] buffer = null;
+            try{
+                buffer = new byte[filesLength.get(i)];
+            }catch (OutOfMemoryError outOfMemoryError){
+                buffer = new byte[1_000_000];
+            }
+            int unreadBytes = filesLength.get(i);
+            int readBytes;
+
+            while(unreadBytes > 0){
+                readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
+                if(readBytes == -1){
+                    // End of stream, reached
+                    break;
+                }
+                fileOS.write(buffer, 0, readBytes);
+                unreadBytes -= readBytes;
+            }
+            fileOS.close();
+        }
+    }
+
     public void transferFiles(File folder) throws IOException {
         OutputStream socketOS = mSocket.getOutputStream();
         BufferedOutputStream socketBOS = new BufferedOutputStream(socketOS);
@@ -141,7 +189,6 @@ public class RecursiveFileTransferProtocol {
     private int getFilesCount(File folder){
         int filesCount = 1;
         File[] filesInFolder = folder.listFiles();
-
 
         for(int i = 0; i < filesInFolder.length; i++){
             if(filesInFolder[i].isDirectory()){
