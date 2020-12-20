@@ -4,7 +4,6 @@
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ExperimentApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ExperimentApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

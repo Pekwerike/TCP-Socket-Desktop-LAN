@@ -16,6 +16,28 @@ public class RecursiveFileTransferProtocol {
         this.mSocket = socket;
     }
 
+    public void receiveFiles() throws IOException{
+        InputStream socketIS = mSocket.getInputStream();
+        BufferedInputStream socketBIS = new BufferedInputStream(socketIS);
+        DataInputStream socketDIS = new DataInputStream(socketBIS);
+
+        // read the number of files received
+        int fileCount = socketDIS.readInt();
+        int[] filesLength = new int[fileCount];
+        String[] filesName = new String[fileCount];
+        ArrayList<Integer> filesCountInFolder = new ArrayList<>();
+
+        // read the name and length of the files received
+        for(int i = 0; i < fileCount; i++){
+            filesLength[i] = (int) socketDIS.readLong();
+            filesName[i] = socketDIS.readUTF();
+            if(filesName[i].startsWith("Directory")){
+                filesCountInFolder.add(socketDIS.readInt());
+            }
+        }
+
+
+    }
     public void transferFiles(File folder) throws IOException {
         OutputStream socketOS = mSocket.getOutputStream();
         BufferedOutputStream socketBOS = new BufferedOutputStream(socketOS);
