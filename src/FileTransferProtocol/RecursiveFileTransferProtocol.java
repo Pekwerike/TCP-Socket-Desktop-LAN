@@ -14,23 +14,20 @@ public class RecursiveFileTransferProtocol {
         this.mSocket = socket;
     }
 
-    public void transferFiles(File[] fileCollection) throws IOException {
+    public void transferFiles(File folder) throws IOException {
         OutputStream socketOS = mSocket.getOutputStream();
         BufferedOutputStream socketBOS = new BufferedOutputStream(socketOS);
         DataOutputStream socketDOS = new DataOutputStream(socketBOS);
 
-        int filesCount = 0;
-
-        for (int i = 0; i < fileCollection.length; i++) {
-            if (fileCollection[i].isDirectory()) {
-                filesCount += fileCollection[i].listFiles().length;
-            } else {
-                filesCount += 1;
-            }
-        }
+        int filesCount = getFilesCount(folder);
         // write the total number of files to transfer
         socketDOS.writeInt(filesCount);
+
+        // write the name and length of each file inside the folder
+
     }
+
+
 
     private int getFilesCount(File folder){
         int filesCount = 1;
