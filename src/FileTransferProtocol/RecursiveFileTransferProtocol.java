@@ -23,6 +23,8 @@ public class RecursiveFileTransferProtocol {
 
         // read the number of files received
         int fileCount = socketDIS.readInt();
+
+        // initialize import collection variables with the filesCount read
         int[] filesLength = new int[fileCount];
         String[] filesName = new String[fileCount];
         ArrayList<Integer> filesCountInFolder = new ArrayList<>();
@@ -33,6 +35,49 @@ public class RecursiveFileTransferProtocol {
             filesName[i] = socketDIS.readUTF();
             if(filesName[i].startsWith("Directory")){
                 filesCountInFolder.add(socketDIS.readInt());
+            }
+        }
+
+        // read and save the bytes of each file received
+        for(int i = 0; i < fileCount; i++){
+            String currentFileName = filesName[i];
+            int currentFileLength = filesLength[i];
+
+            if(currentFileName.startsWith("Directory")){
+                String folderName = currentFileName;
+                // get the amount of file in this directory,
+                // then read and save into the directory the byte of each file under the directory
+                int filesCountInDirectory = filesCountInFolder.get(0);
+                filesCountInFolder.remove(0); // move to the next
+                int newFilesCount = i + filesCountInDirectory + 1;
+                for(int j = i + 1; j < newFilesCount; j++){
+                    if(filesName[j].startsWith("Directory")){
+                        // reached new folder, hence break out of this inner loop
+                        break;
+                    }
+                    FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(folderName, filesName[j]));
+                    byte[] buffer = null;
+                    try{
+                        buffer = new byte[filesLength[j]];
+                    }catch (OutOfMemoryError outOfMemoryError){
+                        buffer = new byte[1_000_000];
+                    }
+                    int unreadBytes = filesLength[j];
+                    int readBytes = 0;
+
+                    while(unreadBytes > 0){
+                        readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
+                        if(readBytes == -1){
+                            // End of stream, reached
+                            break;
+                        }
+                        fileOS.write(buffer, 0, readBytes);
+                        unreadBytes -= readBytes;
+                    }
+                    // move to the next index
+                    i = j;
+                }
+
             }
         }
 
@@ -106,5 +151,11 @@ public class RecursiveFileTransferProtocol {
             }
         }
         return filesCount;
+    }
+
+    private static File saveFileInFolder(String folderName, String fileName) throws IOException {
+        File folder = new File("C:\\Users\\Prosper's PC\\Pictures\\" + folderName);
+        if (!folder.exists()) folder.mkdirs();
+        return new File(folder, fileName);
     }
 }
