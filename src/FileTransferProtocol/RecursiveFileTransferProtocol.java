@@ -2,6 +2,8 @@ package FileTransferProtocol;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * This class makes use of the concept of recursion to transfer multiple files nested in several directories using
@@ -28,10 +30,25 @@ public class RecursiveFileTransferProtocol {
     }
 
 
+    private static ArrayList<File> straightenFiles(File folder){
+        ArrayList<File> filesToReturn = new ArrayList<>();
+        File[] filesInThisFolder = folder.listFiles();
+        filesToReturn.add(folder);
+
+        for(int i = 0; i < filesInThisFolder.length; i++){
+            if(filesInThisFolder[i].isDirectory()){
+                filesToReturn.addAll(straightenFiles(filesInThisFolder[i]));
+            }else {
+                filesToReturn.add(filesInThisFolder[i]);
+            }
+        }
+        return filesToReturn;
+    }
 
     private int getFilesCount(File folder){
         int filesCount = 1;
         File[] filesInFolder = folder.listFiles();
+
 
         for(int i = 0; i < filesInFolder.length; i++){
             if(filesInFolder[i].isDirectory()){

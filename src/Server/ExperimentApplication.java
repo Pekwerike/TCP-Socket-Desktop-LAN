@@ -1,15 +1,39 @@
 package Server;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.Consumer;
 
 public class ExperimentApplication {
 
     public static void main(String[] args){
         File folder1 = getFolder("Lesson 3");
-        System.out.println(getFilesCount(folder1));
+      //  System.out.println(getFilesCount(folder1));
+        ArrayList<File> allFilesInFolder = straightenFiles(folder1);
+        allFilesInFolder.forEach(new Consumer<File>() {
+            @Override
+            public void accept(File file) {
+                System.out.println(file.getName());
+            }
+        });
 
+    }
+
+    private static ArrayList<File> straightenFiles(File folder){
+        ArrayList<File> filesToReturn = new ArrayList<>();
+        File[] filesInThisFolder = folder.listFiles();
+        filesToReturn.add(folder);
+
+        for(int i = 0; i < filesInThisFolder.length; i++){
+            if(filesInThisFolder[i].isDirectory()){
+                filesToReturn.addAll(straightenFiles(filesInThisFolder[i]));
+            }else {
+                filesToReturn.add(filesInThisFolder[i]);
+            }
+        }
+        return filesToReturn;
     }
 
     private static int getFilesCount(File folder){
