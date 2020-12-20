@@ -30,11 +30,26 @@ public class RecursiveFileTransferProtocol {
         for(int i = 0; i < allFilesInFolder.size(); i++){
             File currentFile = allFilesInFolder.get(i);
             if(currentFile.isDirectory()){
-                socketDOS.writeUTF("Directory"+ currentFile.getName());
                 socketDOS.writeLong(0l);
+                socketDOS.writeUTF("Directory"+ currentFile.getName());
+                socketDOS.writeInt(currentFile.listFiles().length); // write the number of files in this directory to the socketDOS
             }else {
-                socketDOS.writeUTF(currentFile.getName());
                 socketDOS.writeLong(currentFile.length());
+                socketDOS.writeUTF(currentFile.getName());
+            }
+        }
+
+        // write the bytes of each file inside the folder to the socketDOS
+        for(int i = 0; i < allFilesInFolder.size(); i++){
+            File currentFile = allFilesInFolder.get(i);
+            if(currentFile.isDirectory()){
+                // move to the files under this directory
+                continue;
+            }else{
+                FileInputStream fileIS = new FileInputStream(currentFile);
+                byte[] buffer = fileIS.readAllBytes();
+                socketDOS.write(buffer);
+                fileIS.close();
             }
         }
 
