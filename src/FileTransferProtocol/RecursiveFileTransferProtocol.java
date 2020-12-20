@@ -31,4 +31,18 @@ public class RecursiveFileTransferProtocol {
         // write the total number of files to transfer
         socketDOS.writeInt(filesCount);
     }
+
+    private int getFilesCount(File folder){
+        int filesCount = 1;
+        File[] filesInFolder = folder.listFiles();
+
+        for(int i = 0; i < filesInFolder.length; i++){
+            if(filesInFolder[i].isDirectory()){
+                filesCount += getFilesCount(filesInFolder[i]);
+            }else {
+                filesCount += 1;
+            }
+        }
+        return filesCount;
+    }
 }
