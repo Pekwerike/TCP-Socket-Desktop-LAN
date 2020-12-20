@@ -45,6 +45,9 @@ public class RecursiveFileTransferProtocol {
 
             if(currentFileName.startsWith("Directory") && currentFileLength == 0){
                 String folderName = currentFileName;
+
+                saveNestedFiles(folderName, fileCount, new ArrayList<String>().addAll(Arrays.asList(filesName)),
+                        new ArrayList<Integer>().addAll(Arrays.asLis>(filesLength)), socketDIS, filesCountInFolder);
                 // get the amount of file in this directory,
                 // then read and save into the directory the byte of each file under the directory
                 int filesCountInDirectory = filesCountInFolder.get(0);
@@ -83,52 +86,8 @@ public class RecursiveFileTransferProtocol {
         }
     }
 
-    private static void saveNestedFiles(String folderName, ArrayList<File> files,
-                                        ArrayList<String> filesName, ArrayList<Integer> filesLength,
-                                        DataInputStream socketDIS, ArrayList<Integer> filesInFoldersCount) throws IOException {
-        for(int i = 0; i < files.size(); i++){
-            if(filesName.get(i).startsWith("Directory")){
-                String newFolderName = filesName.get(i);
-                // reached new folder, hence break out of this inner loop
-                int folderFilesCount = filesInFoldersCount.get(0);
-                filesInFoldersCount.remove(0);
-                ArrayList<File> filesInFolder = new ArrayList<>();
-                ArrayList<String> filesNameInFolder = new ArrayList<>();
-                ArrayList<Integer> filesLengthInFolder = new ArrayList<>();
-                for(int j = i + 1; j < i + folderFilesCount + 1; j++){
-                    filesInFolder.add(files.get(j));
-                    filesNameInFolder.add(filesName.get(j));
-                    filesLengthInFolder.add(filesLength.get(j));
-                    i = j;
-                }
-                saveNestedFiles(newFolderName,
-                        filesInFolder,
-                        filesNameInFolder,
-                        filesLengthInFolder,
-                        socketDIS,
-                        filesInFoldersCount);
-            }
-            FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(folderName, filesName.get(i)));
-            byte[] buffer = null;
-            try{
-                buffer = new byte[filesLength.get(i)];
-            }catch (OutOfMemoryError outOfMemoryError){
-                buffer = new byte[1_000_000];
-            }
-            int unreadBytes = filesLength.get(i);
-            int readBytes;
+    private void readAndSaveFilesRecursively(){
 
-            while(unreadBytes > 0){
-                readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
-                if(readBytes == -1){
-                    // End of stream, reached
-                    break;
-                }
-                fileOS.write(buffer, 0, readBytes);
-                unreadBytes -= readBytes;
-            }
-            fileOS.close();
-        }
     }
 
     public void transferFiles(File folder) throws IOException {
@@ -141,7 +100,7 @@ public class RecursiveFileTransferProtocol {
         socketDOS.writeInt(filesCount);
 
         // write the name and length of each file inside the folder to the socketDOS
-        ArrayList<File> allFilesInFolder = straightenFiles(folder);
+        ArrayList<File> allFilesInFolder = straightenFolderIntoList(folder);
         for(int i = 0; i < allFilesInFolder.size(); i++){
             File currentFile = allFilesInFolder.get(i);
             if(currentFile.isDirectory()){
@@ -171,14 +130,15 @@ public class RecursiveFileTransferProtocol {
     }
 
 
-    private static ArrayList<File> straightenFiles(File folder){
+    private static ArrayList<File> straightenFolderIntoList
+            (File folder){
         ArrayList<File> filesToReturn = new ArrayList<>();
         File[] filesInThisFolder = folder.listFiles();
         filesToReturn.add(folder);
 
         for(int i = 0; i < filesInThisFolder.length; i++){
             if(filesInThisFolder[i].isDirectory()){
-                filesToReturn.addAll(straightenFiles(filesInThisFolder[i]));
+                filesToReturn.addAll(straightenFolderIntoList(filesInThisFolder[i]));
             }else {
                 filesToReturn.add(filesInThisFolder[i]);
             }
