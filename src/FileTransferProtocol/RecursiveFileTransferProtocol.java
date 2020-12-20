@@ -86,8 +86,42 @@ public class RecursiveFileTransferProtocol {
         }
     }
 
-    private void readAndSaveFilesRecursively(){
+    private void readAndSaveFilesRecursively(
+            ArrayList<String> filesName, ArrayList<Integer> filesLength, String directoryName,
+            ArrayList<Integer> directoryFilesCount, DataInputStream socketDIS
+    ) throws IOException {
+        int currentDirectoryFilesCount = directoryFilesCount.get(0);
+        directoryFilesCount.remove(0);
+        for(int i = 0; i < currentDirectoryFilesCount; i++){
+            if( filesName.get(i).startsWith("Directory") && filesLength.get(i) == 0){
+                //new directory encountered
+                ArrayList<String> nextFilesName;
+                ArrayList<Integer> nextFilesLength;
+                String nextDirectoryName = filesName.get(i);
 
+                for(int j = i + 1; j < i + directoryFilesCount.get(0) + 1; j++){
+
+                }
+            }
+            FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(directoryName, filesName.get(i)));
+            byte[] buffer;
+            try{
+                buffer = new byte[filesLength.get(i)];
+            }catch (OutOfMemoryError outOfMemoryError){
+                buffer = new byte[1_000_000];
+            }
+            int unreadBytes = filesLength.get(i);
+            int readBytes = 0;
+            while(unreadBytes > 0){
+                readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
+                if(readBytes == -1){
+                    break; // end of stream
+                }
+                fileOS.write(buffer, 0, readBytes);
+                unreadBytes -= readBytes;
+            }
+            fileOS.close();
+        }
     }
 
     public void transferFiles(File folder) throws IOException {
