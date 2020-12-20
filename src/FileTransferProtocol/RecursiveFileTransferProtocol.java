@@ -27,17 +27,38 @@ public class RecursiveFileTransferProtocol {
         // initialize import collection variables with the filesCount read
         int[] filesLength = new int[fileCount];
         String[] filesName = new String[fileCount];
+
+        ArrayList<String> filesNameAL = new ArrayList<>();
+        ArrayList<Integer> filesLengthAL = new ArrayList<>();
         ArrayList<Integer> filesCountInFolder = new ArrayList<>();
 
         // read the name and length of the files received
         for(int i = 0; i < fileCount; i++){
             filesLength[i] = (int) socketDIS.readLong();
+            filesLengthAL.add(filesLength[i]);
             filesName[i] = socketDIS.readUTF();
+            filesNameAL.add(filesName[i]);
             if(filesName[i].startsWith("Directory")){
                 filesCountInFolder.add(socketDIS.readInt());
             }
         }
+        // read and save the bytes of each file received
+        for(int i = 0; i < fileCount; i++) {
+            String currentFileName = filesName[i];
+            int currentFileLength = filesLength[i];
 
+            if (currentFileName.startsWith("Directory") && currentFileLength == 0) {
+                String folderName = currentFileName;
+                filesNameAL.remove(0);
+                filesLengthAL.remove(0);
+
+                readAndSaveFilesRecursively(filesNameAL,
+                        filesLengthAL, currentFileName, filesCountInFolder,
+                        socketDIS);
+                break;
+            }
+        }
+/*
         // read and save the bytes of each file received
         for(int i = 0; i < fileCount; i++){
             String currentFileName = filesName[i];
@@ -46,8 +67,7 @@ public class RecursiveFileTransferProtocol {
             if(currentFileName.startsWith("Directory") && currentFileLength == 0){
                 String folderName = currentFileName;
 
-                saveNestedFiles(folderName, fileCount, new ArrayList<String>().addAll(Arrays.asList(filesName)),
-                        new ArrayList<Integer>().addAll(Arrays.asLis>(filesLength)), socketDIS, filesCountInFolder);
+
                 // get the amount of file in this directory,
                 // then read and save into the directory the byte of each file under the directory
                 int filesCountInDirectory = filesCountInFolder.get(0);
@@ -83,7 +103,7 @@ public class RecursiveFileTransferProtocol {
                 }
 
             }
-        }
+        }*/
     }
 
     private void readAndSaveFilesRecursively(
@@ -95,13 +115,16 @@ public class RecursiveFileTransferProtocol {
         for(int i = 0; i < currentDirectoryFilesCount; i++){
             if( filesName.get(i).startsWith("Directory") && filesLength.get(i) == 0){
                 //new directory encountered
-                ArrayList<String> nextFilesName;
-                ArrayList<Integer> nextFilesLength;
-                String nextDirectoryName = filesName.get(i);
+                ArrayList<String> nextFilesName = new ArrayList<>();
+                ArrayList<Integer> nextFilesLength = new ArrayList<>();
+                String nextDirectoryName = directoryName + "\\" + filesName.get(i);
 
                 for(int j = i + 1; j < i + directoryFilesCount.get(0) + 1; j++){
-
+                    nextFilesName.add(filesName.get(j));
+                    nextFilesLength.add(filesLength.get(j));
                 }
+                readAndSaveFilesRecursively(nextFilesName, nextFilesLength, nextDirectoryName,
+                        directoryFilesCount, socketDIS);
             }
             FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(directoryName, filesName.get(i)));
             byte[] buffer;
