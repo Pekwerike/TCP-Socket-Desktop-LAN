@@ -23,7 +23,6 @@ public class MainApplication {
             File folder1 = getFolder("Lesson 3");
             File folder2 = getFolder("Lesson 4");
 
-
             File video1 = getVideoFile("ANDK L1 01 IntroVideo");
             File video2 = getVideoFile("L1 03 Dice Roller HSASC V4 V2");
             File video3 = getVideoFile("L1 06 Creating The Dice Roller Project HS-SC");
