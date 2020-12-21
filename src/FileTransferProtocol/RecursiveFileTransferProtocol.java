@@ -37,13 +37,12 @@ public class RecursiveFileTransferProtocol {
             filesLengthAL.add(filesLength[i]);
             filesName[i] = socketDIS.readUTF();
             filesNameAL.add(filesName[i]);
-            System.out.println(filesName[i]);
             if (filesName[i].startsWith("Directory")) {
                 filesCountInFolder.add(socketDIS.readInt());
             }
         }
         // read and save the bytes of each file received
-        readAndSaveFilesRecursively(1, filesNameAL.get(0), socketDIS,
+        readAndSaveFilesRecursively2(1, filesNameAL.get(0), socketDIS,
                 filesNameAL, filesLengthAL, filesCountInFolder);
 
     }
@@ -94,6 +93,51 @@ public class RecursiveFileTransferProtocol {
             }
         }*/
 
+    private void readAndSaveFilesRecursively2(
+            int readIndex, String directoryName,
+            DataInputStream socketDIS,
+            ArrayList<String> filesName,
+            ArrayList<Integer> filesLength,
+            ArrayList<Integer> directoryFilesCount
+    ) throws IOException {
+        int currentDirectoryFilesCount = directoryFilesCount.get(0);
+        directoryFilesCount.remove(0);
+
+        for (int i = readIndex; i < readIndex + currentDirectoryFilesCount; i++) {
+            if (filesName.get(i).startsWith("Directory") && filesLength.get(i) == 0) {
+                // a new directory has been reached inside this directory
+                String nextDirectoryName = directoryName + "\\" + filesName.get(i);
+                int nextReadIndex = i + 1;
+                int nextDirectoryFilesCount = directoryFilesCount.get(0);
+                readAndSaveFilesRecursively2(nextReadIndex, nextDirectoryName, socketDIS, filesName, filesLength, directoryFilesCount);
+                i += nextDirectoryFilesCount;
+                continue;
+            }
+            FileOutputStream fileOS;
+            try {
+                fileOS = new FileOutputStream(saveFileInFolder(directoryName, filesName.get(i)));
+            } catch (FileNotFoundException fileNotFoundException) {
+                continue;
+            }
+            byte[] buffer;
+            try {
+                buffer = new byte[filesLength.get(i)];
+            } catch (OutOfMemoryError outOfMemoryError) {
+                buffer = new byte[1_000_000];
+            }
+            int unreadBytes = filesLength.get(i);
+            int readBytes = 0;
+            while (unreadBytes > 0) {
+                readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
+                if (readBytes == -1) {
+                    break; // end of stream
+                }
+                fileOS.write(buffer, 0, readBytes);
+                unreadBytes -= readBytes;
+            }
+            fileOS.close();
+        }
+    }
 
     private void readAndSaveFilesRecursively(
             int readIndex, String directoryName,

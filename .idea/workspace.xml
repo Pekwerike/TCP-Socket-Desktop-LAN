@@ -4,7 +4,6 @@
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ExperimentApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ExperimentApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +41,7 @@
       <recent name="C:\Users\Prosper's PC\Desktop\Princeton Algorithms\ServerSocket\src\Client" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ExperimentApplication">
+  <component name="RunManager" selected="Application.ClientMainApplication">
     <configuration name="ClientMainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.ClientMainApplication" />
       <module name="TCPSocketDesktopLAN" />
@@ -85,9 +84,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ExperimentApplication" />
         <item itemvalue="Application.ClientMainApplication" />
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="Application.ExperimentApplication" />
         <item itemvalue="Application.VideosMovement" />
       </list>
     </recent_temporary>
@@ -138,22 +137,22 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="462" y="94" key="FileChooserDialogImpl/0.0.1463.783@0.0.1463.783" timestamp="1607973746860" />
-    <state width="1408" height="255" key="GridCell.Tab.0.bottom" timestamp="1608550864699">
+    <state width="1408" height="255" key="GridCell.Tab.0.bottom" timestamp="1608553265331">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="255" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608550864699" />
-    <state width="1408" height="255" key="GridCell.Tab.0.center" timestamp="1608550864698">
+    <state width="1408" height="255" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608553265331" />
+    <state width="1408" height="255" key="GridCell.Tab.0.center" timestamp="1608553265331">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="255" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608550864698" />
-    <state width="1408" height="255" key="GridCell.Tab.0.left" timestamp="1608550864698">
+    <state width="1408" height="255" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608553265331" />
+    <state width="1408" height="255" key="GridCell.Tab.0.left" timestamp="1608553265330">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="255" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608550864698" />
-    <state width="1408" height="255" key="GridCell.Tab.0.right" timestamp="1608550864698">
+    <state width="1408" height="255" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608553265330" />
+    <state width="1408" height="255" key="GridCell.Tab.0.right" timestamp="1608553265331">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="255" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608550864698" />
+    <state width="1408" height="255" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608553265331" />
     <state width="1408" height="230" key="GridCell.Tab.1.bottom" timestamp="1608548439914">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
@@ -200,7 +199,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java</url>
-          <line>112</line>
+          <line>157</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
