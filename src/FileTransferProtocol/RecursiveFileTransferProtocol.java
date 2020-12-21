@@ -54,7 +54,7 @@ public class RecursiveFileTransferProtocol {
 
                 readAndSaveFilesRecursively(filesNameAL,
                         filesLengthAL, currentFileName, filesCountInFolder,
-                        socketDIS, 0, filesNameAL, filesLengthAL);
+                        socketDIS, 0);
                 break;
             }
         }
@@ -106,10 +106,13 @@ public class RecursiveFileTransferProtocol {
         }*/
     }
 
+    private void readAndSaveFilesRecursively2(
+            int initialReadIndex, String directoryName,
+    )
+
     private void readAndSaveFilesRecursively(
             ArrayList<String> filesName, ArrayList<Integer> filesLength, String directoryName,
-            ArrayList<Integer> directoryFilesCount, DataInputStream socketDIS, int lastMarkedIndex, ArrayList<String>
-            initialFilesName, ArrayList<Integer> initialFilesLength
+            ArrayList<Integer> directoryFilesCount, DataInputStream socketDIS, int lastMarkedIndex
     ) throws IOException {
         int currentDirectoryFilesCount = directoryFilesCount.get(0);
         directoryFilesCount.remove(0);
@@ -121,12 +124,12 @@ public class RecursiveFileTransferProtocol {
                 String nextDirectoryName = directoryName + "\\" + filesName.get(i);
                 int nextLastMarkedIndex = lastMarkedIndex + i;
 
-                for(int j = nextLastMarkedIndex + 1; j < nextLastMarkedIndex + directoryFilesCount.get(0) + 1; j++){
-                    nextFilesName.add(initialFilesName.get(j));
-                    nextFilesLength.add(initialFilesLength.get(j));
+                for(int j = i + 1; j < nextLastMarkedIndex + directoryFilesCount.get(0) + 1; j++){
+                    nextFilesName.add(filesName.get(j));
+                    nextFilesLength.add(filesLength.get(j));
                 }
                 readAndSaveFilesRecursively(nextFilesName, nextFilesLength, nextDirectoryName,
-                        directoryFilesCount, socketDIS, nextLastMarkedIndex, initialFilesName, initialFilesLength);
+                        directoryFilesCount, socketDIS, nextLastMarkedIndex);
             }
             FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(directoryName, filesName.get(i)));
             byte[] buffer;
