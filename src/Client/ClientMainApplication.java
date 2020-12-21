@@ -1,7 +1,7 @@
 package Client;
 
 import FileTransferProtocol.OptimizedFileTransferProtocol;
-import FileTransferProtocol.RecursiveFileTransferProtocol;
+import FileTransferProtocol.GeneralizedFileTransferProtocol;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,11 +30,11 @@ public class ClientMainApplication {
 
 
             OptimizedFileTransferProtocol ftp = new OptimizedFileTransferProtocol(server);
-            RecursiveFileTransferProtocol recursiveFileTransferProtocol = new RecursiveFileTransferProtocol(server);
+            GeneralizedFileTransferProtocol generalizedFileTransferProtocol = new GeneralizedFileTransferProtocol(server);
             try {
                 //videosMovement.transferVideo(videoCollection);
                // ftp.optimizedReceiveFile();
-                recursiveFileTransferProtocol.receiveFiles();
+                generalizedFileTransferProtocol.receiveFiles();
             } catch (IOException e) {
                 e.printStackTrace();
             }

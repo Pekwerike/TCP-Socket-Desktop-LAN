@@ -9,10 +9,10 @@ import java.util.*;
  * This class makes use of the concept of recursion to transfer multiple files nested in several directories using
  * a single socket stream
  **/
-public class RecursiveFileTransferProtocol {
+public class GeneralizedFileTransferProtocol {
     private Socket mSocket;
 
-    public RecursiveFileTransferProtocol(Socket socket) {
+    public GeneralizedFileTransferProtocol(Socket socket) {
         this.mSocket = socket;
     }
 
