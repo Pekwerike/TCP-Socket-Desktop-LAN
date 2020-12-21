@@ -83,7 +83,7 @@ public class RecursiveFileTransferProtocol {
             }
             FileOutputStream fileOS;
             try {
-                fileOS = new FileOutputStream(saveFileInFolder(directoryName, filesName.get(i)));
+                fileOS = new FileOutputStream(FileTransferUtils.saveFileInFolder(directoryName, filesName.get(i)));
             } catch (FileNotFoundException fileNotFoundException) {
                 continue;
             }
@@ -114,13 +114,13 @@ public class RecursiveFileTransferProtocol {
         BufferedOutputStream socketBOS = new BufferedOutputStream(socketOS);
         DataOutputStream socketDOS = new DataOutputStream(socketBOS);
 
-        int filesCount = getFilesCount(folder);
-        Hashtable<String, Integer> directoryFilesCount = directoryFilesCount(folder);
+        int filesCount = FileTransferUtils.getFilesCount(folder);
+        Hashtable<String, Integer> directoryFilesCount = FileTransferUtils.directoryFilesCount(folder);
         // write the total number of files to transfer to the socketDOS
         socketDOS.writeInt(filesCount);
 
         // write the name and length of each file inside the folder to the socketDOS
-        ArrayList<File> allFilesInFolder = straightenFolderIntoList(folder);
+        ArrayList<File> allFilesInFolder = FileTransferUtils.straightenFolderIntoList(folder);
         for (File currentFile : allFilesInFolder) {
             if (currentFile.isDirectory()) {
                 socketDOS.writeLong(0l);
@@ -133,6 +133,7 @@ public class RecursiveFileTransferProtocol {
         }
 
         while(true) {
+            boolean terminate = false;
             // write the bytes of each file inside the folder to the socketDOS
             for (File currentFile : allFilesInFolder) {
                 if (currentFile.isDirectory()) {
@@ -143,73 +144,14 @@ public class RecursiveFileTransferProtocol {
                     try {
                         socketDOS.write(buffer);
                     } catch (SocketException connectionResetByPeer) {
+                        terminate = true;
                         break;
                     }
                     fileIS.close();
                 }
             }
+            if(terminate) break;
         }
 
-    }
-
-
-    private static ArrayList<File> straightenFolderIntoList
-            (File folder) {
-        ArrayList<File> filesToReturn = new ArrayList<>();
-        File[] filesInThisFolder = folder.listFiles();
-        filesToReturn.add(folder);
-
-        for (int i = 0; i < filesInThisFolder.length; i++) {
-            if (filesInThisFolder[i].isDirectory()) {
-                filesToReturn.addAll(straightenFolderIntoList(filesInThisFolder[i]));
-            } else {
-                filesToReturn.add(filesInThisFolder[i]);
-            }
-        }
-        return filesToReturn;
-    }
-
-    private int getFilesCount(File folder) {
-        int filesCount = 1;
-        File[] filesInFolder = folder.listFiles();
-
-        for (int i = 0; i < filesInFolder.length; i++) {
-            if (filesInFolder[i].isDirectory()) {
-                filesCount += getFilesCount(filesInFolder[i]);
-            } else {
-                filesCount += 1;
-            }
-        }
-        return filesCount;
-    }
-
-
-
-    private static Hashtable<String, Integer> directoryFilesCount(File folder){
-        int filesCount = 0;
-        Hashtable<String, Integer> directoryFilesCount = new Hashtable<>();
-        File[] directoryFiles = folder.listFiles();
-        assert directoryFiles != null;
-        for (File directoryFile : directoryFiles) {
-            if (directoryFile.isDirectory()) {
-                filesCount += 1;
-                Hashtable<String, Integer> innerDirectoryFilesCount = directoryFilesCount(directoryFile);
-                for (Map.Entry<String, Integer> entry : innerDirectoryFilesCount.entrySet()) {
-                    directoryFilesCount.put(entry.getKey(), entry.getValue());
-                }
-                int innerCount = innerDirectoryFilesCount.get(directoryFile.getName());
-                filesCount += innerCount;
-            } else {
-                filesCount += 1;
-            }
-        }
-        directoryFilesCount.put(folder.getName(), filesCount);
-        return directoryFilesCount;
-    }
-
-    private static File saveFileInFolder(String folderName, String fileName) throws IOException {
-        File folder = new File("C:\\Users\\Prosper's PC\\Pictures\\" + folderName);
-        if (!folder.exists()) folder.mkdirs();
-        return new File(folder, fileName);
     }
 }
