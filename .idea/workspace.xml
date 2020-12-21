@@ -199,17 +199,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java</url>
-          <line>151</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java</url>
-          <line>146</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java</url>
-          <line>113</line>
+          <line>114</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

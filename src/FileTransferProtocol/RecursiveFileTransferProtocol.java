@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Hashtable;
 
 /**
  * This class makes use of the concept of recursion to transfer multiple files nested in several directories using
@@ -116,7 +117,7 @@ public class RecursiveFileTransferProtocol {
             FileOutputStream fileOS;
             try {
                 fileOS = new FileOutputStream(saveFileInFolder(directoryName, filesName.get(i)));
-            }catch (FileNotFoundException fileNotFoundException){
+            } catch (FileNotFoundException fileNotFoundException) {
                 continue;
             }
             byte[] buffer;
@@ -210,13 +211,24 @@ public class RecursiveFileTransferProtocol {
         return filesCount;
     }
 
-    private int directoryFilesCount(File folder){
+
+
+    private Hashtable<String, Integer> directoryFilesCount2(File folder){
         int filesCount = 0;
+        Hashtable<String, Integer> directoryFilesCount = new Hashtable<>();
         File[] directoryFiles = folder.listFiles();
-
         for(int i = 0; i < directoryFiles.length; i++){
-
+            if(directoryFiles[i].isDirectory()){
+               Hashtable<String, Integer> innerDirectoryFilesCount = directoryFilesCount2(directoryFiles[i]);
+               int innerCount = innerDirectoryFilesCount.get(directoryFiles[i].getName());
+               directoryFilesCount.put(directoryFiles[i].getName(), innerCount);
+               filesCount += innerCount;
+            }else{
+                filesCount += 1;
+            }
         }
+        directoryFilesCount.put(folder.getName(), filesCount);
+        return directoryFilesCount;
     }
 
     private static File saveFileInFolder(String folderName, String fileName) throws IOException {

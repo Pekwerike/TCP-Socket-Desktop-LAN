@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Hashtable;
 import java.util.function.Consumer;
 
 public class ExperimentApplication {
@@ -12,17 +13,26 @@ public class ExperimentApplication {
         File folder1 = getFolder("Lesson 3");
       //  System.out.println(getFilesCount(folder1));
         ArrayList<File> allFilesInFolder = straightenFiles(folder1);
-        allFilesInFolder.forEach(new Consumer<File>() {
-            @Override
-            public void accept(File file) {
-                if(file.isDirectory()){
-                    System.out.println("Directory" + file.getName());
-                }else {
-                    System.out.println(file.getName());
-                }
-            }
-        });
+        Hashtable<String, Integer> directoryFilesCount = directoryFilesCount2(folder1);
 
+    }
+
+    private static Hashtable<String, Integer> directoryFilesCount2(File folder){
+        int filesCount = 0;
+        Hashtable<String, Integer> directoryFilesCount = new Hashtable<>();
+        File[] directoryFiles = folder.listFiles();
+        for(int i = 0; i < directoryFiles.length; i++){
+            if(directoryFiles[i].isDirectory()){
+                Hashtable<String, Integer> innerDirectoryFilesCount = directoryFilesCount2(directoryFiles[i]);
+                int innerCount = innerDirectoryFilesCount.get(directoryFiles[i].getName());
+                directoryFilesCount.put(directoryFiles[i].getName(), innerCount);
+                filesCount += innerCount;
+            }else{
+                filesCount += 1;
+            }
+        }
+        directoryFilesCount.put(folder.getName(), filesCount);
+        return directoryFilesCount;
     }
 
     private static ArrayList<File> straightenFiles(File folder){
