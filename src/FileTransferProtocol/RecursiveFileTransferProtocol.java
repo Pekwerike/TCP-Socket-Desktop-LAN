@@ -2,9 +2,7 @@ package FileTransferProtocol;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Hashtable;
+import java.util.*;
 
 /**
  * This class makes use of the concept of recursion to transfer multiple files nested in several directories using
@@ -147,6 +145,7 @@ public class RecursiveFileTransferProtocol {
         DataOutputStream socketDOS = new DataOutputStream(socketBOS);
 
         int filesCount = getFilesCount(folder);
+        Hashtable<String, Integer> directoryFilesCount = directoryFilesCount(folder);
         // write the total number of files to transfer to the socketDOS
         socketDOS.writeInt(filesCount);
 
@@ -157,7 +156,7 @@ public class RecursiveFileTransferProtocol {
             if (currentFile.isDirectory()) {
                 socketDOS.writeLong(0l);
                 socketDOS.writeUTF("Directory" + currentFile.getName());
-                socketDOS.writeInt(currentFile.listFiles().length); // write the number of files in this directory to the socketDOS
+                socketDOS.writeInt(directoryFilesCount.get(currentFile.getName())); // write the number of files in this directory to the socketDOS
             } else {
                 socketDOS.writeLong(currentFile.length());
                 socketDOS.writeUTF(currentFile.getName());
@@ -213,16 +212,19 @@ public class RecursiveFileTransferProtocol {
 
 
 
-    private Hashtable<String, Integer> directoryFilesCount2(File folder){
+    private static Hashtable<String, Integer> directoryFilesCount(File folder){
         int filesCount = 0;
         Hashtable<String, Integer> directoryFilesCount = new Hashtable<>();
         File[] directoryFiles = folder.listFiles();
         for(int i = 0; i < directoryFiles.length; i++){
             if(directoryFiles[i].isDirectory()){
-               Hashtable<String, Integer> innerDirectoryFilesCount = directoryFilesCount2(directoryFiles[i]);
-               int innerCount = innerDirectoryFilesCount.get(directoryFiles[i].getName());
-               directoryFilesCount.put(directoryFiles[i].getName(), innerCount);
-               filesCount += innerCount;
+                filesCount += 1;
+                Hashtable<String, Integer> innerDirectoryFilesCount = directoryFilesCount(directoryFiles[i]);
+                for(Map.Entry<String, Integer> entry:innerDirectoryFilesCount.entrySet()){
+                    directoryFilesCount.put(entry.getKey(), entry.getValue());
+                }
+                int innerCount = innerDirectoryFilesCount.get(directoryFiles[i].getName());
+                filesCount += innerCount;
             }else{
                 filesCount += 1;
             }
