@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/GeneralizedFileTransferProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/GeneralizedFileTransferProtocol.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,10 +125,10 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="493" y="35" key="#com.intellij.ide.util.MemberChooser/0.0.1463.783@0.0.1463.783" timestamp="1608321467551" />
-    <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1607944410269">
+    <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1608562110155">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1463.783@0.0.1463.783" timestamp="1607944410269" />
+    <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1463.783@0.0.1463.783" timestamp="1608562110155" />
     <state x="400" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608145921704">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
@@ -137,22 +137,22 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="462" y="94" key="FileChooserDialogImpl/0.0.1463.783@0.0.1463.783" timestamp="1607973746860" />
-    <state width="1408" height="265" key="GridCell.Tab.0.bottom" timestamp="1608561842113">
+    <state width="1408" height="265" key="GridCell.Tab.0.bottom" timestamp="1608562267619">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="265" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608561842113" />
-    <state width="1408" height="265" key="GridCell.Tab.0.center" timestamp="1608561842113">
+    <state width="1408" height="265" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608562267619" />
+    <state width="1408" height="265" key="GridCell.Tab.0.center" timestamp="1608562267619">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="265" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608561842113" />
-    <state width="1408" height="265" key="GridCell.Tab.0.left" timestamp="1608561842113">
+    <state width="1408" height="265" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608562267619" />
+    <state width="1408" height="265" key="GridCell.Tab.0.left" timestamp="1608562267619">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="265" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608561842113" />
-    <state width="1408" height="265" key="GridCell.Tab.0.right" timestamp="1608561842113">
+    <state width="1408" height="265" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608562267619" />
+    <state width="1408" height="265" key="GridCell.Tab.0.right" timestamp="1608562267619">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="265" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608561842113" />
+    <state width="1408" height="265" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608562267619" />
     <state width="1408" height="230" key="GridCell.Tab.1.bottom" timestamp="1608560411618">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
@@ -202,7 +202,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java</url>
+          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/GeneralizedFileTransferProtocol.java</url>
           <line>76</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>

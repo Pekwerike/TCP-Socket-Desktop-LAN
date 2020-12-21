@@ -41,17 +41,15 @@ public class GeneralizedFileTransferProtocol {
             filesNameAL.add(filesName[i]);
             if (filesName[i].startsWith("Directory")) {
                 directoryCount.put(filesName[i].substring(9), socketDIS.readInt());
-               // filesCountInFolder.add(socketDIS.readInt());
+                // filesCountInFolder.add(socketDIS.readInt());
             }
         }
 
-        while(true) {
-            String firstDirectoryName = filesNameAL.get(0).substring(9);
-            // read and save the bytes of each file received
-            readAndSaveFilesRecursively(1,firstDirectoryName , socketDIS,
-                    filesNameAL, filesLengthAL, directoryCount,firstDirectoryName);
-            break;
-        }
+        String firstDirectoryName = filesNameAL.get(0).substring(9);
+        // read and save the bytes of each file received
+        readAndSaveFilesRecursively(1, firstDirectoryName, socketDIS,
+                filesNameAL, filesLengthAL, directoryCount, firstDirectoryName);
+
     }
 
     private void readAndSaveFilesRecursively(
@@ -108,7 +106,6 @@ public class GeneralizedFileTransferProtocol {
     }
 
 
-
     public void transferFiles(File folder) throws IOException {
         OutputStream socketOS = mSocket.getOutputStream();
         BufferedOutputStream socketBOS = new BufferedOutputStream(socketOS);
@@ -132,7 +129,7 @@ public class GeneralizedFileTransferProtocol {
             }
         }
 
-        while(true) {
+        while (true) {
             boolean terminate = false;
             // write the bytes of each file inside the folder to the socketDOS
             for (File currentFile : allFilesInFolder) {
@@ -150,7 +147,7 @@ public class GeneralizedFileTransferProtocol {
                     fileIS.close();
                 }
             }
-            if(terminate) break;
+            if (terminate) break;
         }
 
     }
