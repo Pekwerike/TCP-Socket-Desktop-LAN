@@ -126,7 +126,7 @@ public class RecursiveFileTransferProtocol {
                 buffer = new byte[1_000_000];
             }
             int unreadBytes = filesLength.get(i);
-            int readBytes = 0;
+            int readBytes;
             while (unreadBytes > 0) {
                 readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
                 if (readBytes == -1) {

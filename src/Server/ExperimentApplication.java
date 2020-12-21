@@ -7,7 +7,7 @@ import java.util.function.Consumer;
 public class ExperimentApplication {
 
     public static void main(String[] args){
-        File folder1 = getFolder("Lesson 3");
+        File folder1 = getFolder("CSC GROUP 5 PROJECT");
       //  System.out.println(getFilesCount(folder1));
         ArrayList<File> allFilesInFolder = straightenFiles(folder1);
         allFilesInFolder.forEach(new Consumer<File>() {
