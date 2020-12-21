@@ -25,23 +25,18 @@ public class GeneralizedFileTransferProtocol {
         int fileCount = socketDIS.readInt();
 
         // initialize import collection variables with the filesCount read
-        int[] filesLength = new int[fileCount];
         String[] filesName = new String[fileCount];
 
         ArrayList<String> filesNameAL = new ArrayList<>();
         ArrayList<Integer> filesLengthAL = new ArrayList<>();
-        ArrayList<Integer> filesCountInFolder = new ArrayList<>();
         HashMap<String, Integer> directoryCount = new HashMap<>();
 
         // read the name and length of the files received
         for (int i = 0; i < fileCount; i++) {
-            filesLength[i] = (int) socketDIS.readLong();
-            filesLengthAL.add(filesLength[i]);
-            filesName[i] = socketDIS.readUTF();
-            filesNameAL.add(filesName[i]);
-            if (filesName[i].startsWith("Directory")) {
-                directoryCount.put(filesName[i].substring(9), socketDIS.readInt());
-                // filesCountInFolder.add(socketDIS.readInt());
+            filesLengthAL.add((int) socketDIS.readLong());
+            filesNameAL.add(socketDIS.readUTF());
+            if (filesNameAL.get(i).startsWith("Directory")) {
+                directoryCount.put(filesNameAL.get(i).substring(9), socketDIS.readInt());
             }
         }
 
@@ -57,13 +52,10 @@ public class GeneralizedFileTransferProtocol {
             DataInputStream socketDIS,
             ArrayList<String> filesName,
             ArrayList<Integer> filesLength,
-            //ArrayList<Integer> directoryFilesCount,
             HashMap<String, Integer> directoryFilesCount,
             String directoryPlainName
     ) throws IOException {
         int currentDirectoryFilesCount = directoryFilesCount.get(directoryPlainName);
-        /*int currentDirectoryFilesCount = directoryFilesCount.get(0);
-        directoryFilesCount.remove(0);*/
 
         for (int i = readIndex; i < readIndex + currentDirectoryFilesCount; i++) {
             if (filesName.get(i).startsWith("Directory") && filesLength.get(i) == 0) {
