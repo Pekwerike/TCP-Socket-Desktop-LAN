@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/OptimizedFileTransferProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/OptimizedFileTransferProtocol.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ExperimentApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ExperimentApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
@@ -139,38 +141,38 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="462" y="94" key="FileChooserDialogImpl/0.0.1463.783@0.0.1463.783" timestamp="1607973746860" />
-    <state width="1408" height="255" key="GridCell.Tab.0.bottom" timestamp="1608554315599">
+    <state width="1408" height="265" key="GridCell.Tab.0.bottom" timestamp="1608561140228">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="255" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608554315599" />
-    <state width="1408" height="255" key="GridCell.Tab.0.center" timestamp="1608554315598">
+    <state width="1408" height="265" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608561140228" />
+    <state width="1408" height="265" key="GridCell.Tab.0.center" timestamp="1608561140228">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="255" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608554315598" />
-    <state width="1408" height="255" key="GridCell.Tab.0.left" timestamp="1608554315598">
+    <state width="1408" height="265" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608561140228" />
+    <state width="1408" height="265" key="GridCell.Tab.0.left" timestamp="1608561140228">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="255" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608554315598" />
-    <state width="1408" height="255" key="GridCell.Tab.0.right" timestamp="1608554315599">
+    <state width="1408" height="265" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608561140228" />
+    <state width="1408" height="265" key="GridCell.Tab.0.right" timestamp="1608561140228">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="255" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608554315599" />
-    <state width="1408" height="230" key="GridCell.Tab.1.bottom" timestamp="1608548439914">
+    <state width="1408" height="265" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608561140228" />
+    <state width="1408" height="230" key="GridCell.Tab.1.bottom" timestamp="1608560411618">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="230" key="GridCell.Tab.1.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608548439914" />
-    <state width="1408" height="230" key="GridCell.Tab.1.center" timestamp="1608548439913">
+    <state width="1408" height="230" key="GridCell.Tab.1.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608560411618" />
+    <state width="1408" height="230" key="GridCell.Tab.1.center" timestamp="1608560411618">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="230" key="GridCell.Tab.1.center/0.0.1463.783@0.0.1463.783" timestamp="1608548439913" />
-    <state width="1408" height="230" key="GridCell.Tab.1.left" timestamp="1608548439913">
+    <state width="1408" height="230" key="GridCell.Tab.1.center/0.0.1463.783@0.0.1463.783" timestamp="1608560411618" />
+    <state width="1408" height="230" key="GridCell.Tab.1.left" timestamp="1608560411618">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="230" key="GridCell.Tab.1.left/0.0.1463.783@0.0.1463.783" timestamp="1608548439913" />
-    <state width="1408" height="230" key="GridCell.Tab.1.right" timestamp="1608548439913">
+    <state width="1408" height="230" key="GridCell.Tab.1.left/0.0.1463.783@0.0.1463.783" timestamp="1608560411618" />
+    <state width="1408" height="230" key="GridCell.Tab.1.right" timestamp="1608560411618">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1408" height="230" key="GridCell.Tab.1.right/0.0.1463.783@0.0.1463.783" timestamp="1608548439913" />
+    <state width="1408" height="230" key="GridCell.Tab.1.right/0.0.1463.783@0.0.1463.783" timestamp="1608560411618" />
     <state x="377" y="180" key="com.intellij.ide.util.TipDialog" timestamp="1608487391911">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
@@ -179,6 +181,10 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="331" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1463.783@0.0.1463.783" timestamp="1608491028280" />
+    <state x="510" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608557373321">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state x="510" y="293" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1463.783@0.0.1463.783" timestamp="1608557373321" />
     <state x="400" y="103" key="extract.method.dialog" timestamp="1607864037186">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
@@ -201,8 +207,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/FileTransferProtocol/RecursiveFileTransferProtocol.java</url>
-          <line>156</line>
-          <option name="timeStamp" value="4" />
+          <line>76</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

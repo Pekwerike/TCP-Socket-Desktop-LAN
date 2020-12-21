@@ -21,7 +21,6 @@ public class OptimizedFileTransferProtocol {
         BufferedInputStream socketBIS = new BufferedInputStream(socketIS);
         DataInputStream socketDIS = new DataInputStream(socketBIS);
 
-        while (true) {
             // get the number of files received
             int filesCount = socketDIS.readInt();
 
@@ -101,9 +100,9 @@ public class OptimizedFileTransferProtocol {
                         fileOS.close();
                     }
                 }
-                break;
+
             }
-        }
+
     }
 
     public void optimizedTransferFile(File[] fileCollection) throws IOException {

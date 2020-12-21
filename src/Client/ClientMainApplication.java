@@ -33,7 +33,7 @@ public class ClientMainApplication {
             RecursiveFileTransferProtocol recursiveFileTransferProtocol = new RecursiveFileTransferProtocol(server);
             try {
                 //videosMovement.transferVideo(videoCollection);
-              //  ftp.optimizedReceiveFile();
+               // ftp.optimizedReceiveFile();
                 recursiveFileTransferProtocol.receiveFiles();
             } catch (IOException e) {
                 e.printStackTrace();

@@ -2,6 +2,7 @@ package FileTransferProtocol;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.*;
 
 /**
@@ -30,6 +31,7 @@ public class RecursiveFileTransferProtocol {
         ArrayList<String> filesNameAL = new ArrayList<>();
         ArrayList<Integer> filesLengthAL = new ArrayList<>();
         ArrayList<Integer> filesCountInFolder = new ArrayList<>();
+        HashMap<String, Integer> directoryCount = new HashMap<>();
 
         // read the name and length of the files received
         for (int i = 0; i < fileCount; i++) {
@@ -38,78 +40,44 @@ public class RecursiveFileTransferProtocol {
             filesName[i] = socketDIS.readUTF();
             filesNameAL.add(filesName[i]);
             if (filesName[i].startsWith("Directory")) {
-                filesCountInFolder.add(socketDIS.readInt());
+                directoryCount.put(filesName[i].substring(9), socketDIS.readInt());
+               // filesCountInFolder.add(socketDIS.readInt());
             }
         }
-        // read and save the bytes of each file received
-        readAndSaveFilesRecursively2(1, filesNameAL.get(0), socketDIS,
-                filesNameAL, filesLengthAL, filesCountInFolder);
 
+        while(true) {
+            String firstDirectoryName = filesNameAL.get(0).substring(9);
+            // read and save the bytes of each file received
+            readAndSaveFilesRecursively(1,firstDirectoryName , socketDIS,
+                    filesNameAL, filesLengthAL, directoryCount,firstDirectoryName);
+            break;
+        }
     }
-/*
-        // read and save the bytes of each file received
-        for(int i = 0; i < fileCount; i++){
-            String currentFileName = filesName[i];
-            int currentFileLength = filesLength[i];
 
-            if(currentFileName.startsWith("Directory") && currentFileLength == 0){
-                String folderName = currentFileName;
-
-
-                // get the amount of file in this directory,
-                // then read and save into the directory the byte of each file under the directory
-                int filesCountInDirectory = filesCountInFolder.get(0);
-                filesCountInFolder.remove(0); // move to the next
-                int newFilesCount = i + filesCountInDirectory + 1;
-                for(int j = i + 1; j < newFilesCount; j++){
-                    if(filesName[j].startsWith("Directory")){
-                        // reached new folder, hence break out of this inner loop
-                        break;
-                    }
-                    FileOutputStream fileOS = new FileOutputStream(saveFileInFolder(folderName, filesName[j]));
-                    byte[] buffer = null;
-                    try{
-                        buffer = new byte[filesLength[j]];
-                    }catch (OutOfMemoryError outOfMemoryError){
-                        buffer = new byte[1_000_000];
-                    }
-                    int unreadBytes = filesLength[j];
-                    int readBytes = 0;
-
-                    while(unreadBytes > 0){
-                        readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
-                        if(readBytes == -1){
-                            // End of stream, reached
-                            break;
-                        }
-                        fileOS.write(buffer, 0, readBytes);
-                        unreadBytes -= readBytes;
-                    }
-                    fileOS.close();
-                    // move to the next index
-                    i = j;
-                }
-
-            }
-        }*/
-
-    private void readAndSaveFilesRecursively2(
+    private void readAndSaveFilesRecursively(
             int readIndex, String directoryName,
             DataInputStream socketDIS,
             ArrayList<String> filesName,
             ArrayList<Integer> filesLength,
-            ArrayList<Integer> directoryFilesCount
+            //ArrayList<Integer> directoryFilesCount,
+            HashMap<String, Integer> directoryFilesCount,
+            String directoryPlainName
     ) throws IOException {
-        int currentDirectoryFilesCount = directoryFilesCount.get(0);
-        directoryFilesCount.remove(0);
+        int currentDirectoryFilesCount = directoryFilesCount.get(directoryPlainName);
+        /*int currentDirectoryFilesCount = directoryFilesCount.get(0);
+        directoryFilesCount.remove(0);*/
 
         for (int i = readIndex; i < readIndex + currentDirectoryFilesCount; i++) {
             if (filesName.get(i).startsWith("Directory") && filesLength.get(i) == 0) {
                 // a new directory has been reached inside this directory
-                String nextDirectoryName = directoryName + "\\" + filesName.get(i);
+                String nextDirectoryPlainName = filesName.get(i).substring(9);
+                String nextDirectoryName = directoryName + "\\" + nextDirectoryPlainName;
                 int nextReadIndex = i + 1;
-                int nextDirectoryFilesCount = directoryFilesCount.get(0);
-                readAndSaveFilesRecursively2(nextReadIndex, nextDirectoryName, socketDIS, filesName, filesLength, directoryFilesCount);
+
+                int nextDirectoryFilesCount = directoryFilesCount.get(filesName.get(i).substring(9));
+
+                readAndSaveFilesRecursively(nextReadIndex, nextDirectoryName, socketDIS, filesName, filesLength, directoryFilesCount,
+                        nextDirectoryPlainName);
                 i += nextDirectoryFilesCount;
                 continue;
             }
@@ -139,48 +107,6 @@ public class RecursiveFileTransferProtocol {
         }
     }
 
-    private void readAndSaveFilesRecursively(
-            int readIndex, String directoryName,
-            DataInputStream socketDIS,
-            ArrayList<String> filesName,
-            ArrayList<Integer> filesLength,
-            ArrayList<Integer> directoryFilesCount
-    ) throws IOException {
-        int currentDirectoryFilesCount = directoryFilesCount.get(0);
-        directoryFilesCount.remove(0);
-
-        for (int i = readIndex; i < readIndex + currentDirectoryFilesCount; i++) {
-            if (filesName.get(i).startsWith("Directory") && filesLength.get(i) == 0) {
-                // a new directory has been reached inside this directory
-                String nextDirectoryName = directoryName + "\\" + filesName.get(i);
-                int nextReadIndex = i + 1;
-                readAndSaveFilesRecursively(nextReadIndex, nextDirectoryName, socketDIS, filesName, filesLength, directoryFilesCount);
-            }
-            FileOutputStream fileOS;
-            try {
-                fileOS = new FileOutputStream(saveFileInFolder(directoryName, filesName.get(i)));
-            } catch (FileNotFoundException fileNotFoundException) {
-                continue;
-            }
-            byte[] buffer;
-            try {
-                buffer = new byte[filesLength.get(i)];
-            } catch (OutOfMemoryError outOfMemoryError) {
-                buffer = new byte[1_000_000];
-            }
-            int unreadBytes = filesLength.get(i);
-            int readBytes = 0;
-            while (unreadBytes > 0) {
-                readBytes = socketDIS.read(buffer, 0, Math.min(unreadBytes, buffer.length));
-                if (readBytes == -1) {
-                    break; // end of stream
-                }
-                fileOS.write(buffer, 0, readBytes);
-                unreadBytes -= readBytes;
-            }
-            fileOS.close();
-        }
-    }
 
 
     public void transferFiles(File folder) throws IOException {
@@ -195,8 +121,7 @@ public class RecursiveFileTransferProtocol {
 
         // write the name and length of each file inside the folder to the socketDOS
         ArrayList<File> allFilesInFolder = straightenFolderIntoList(folder);
-        for (int i = 0; i < allFilesInFolder.size(); i++) {
-            File currentFile = allFilesInFolder.get(i);
+        for (File currentFile : allFilesInFolder) {
             if (currentFile.isDirectory()) {
                 socketDOS.writeLong(0l);
                 socketDOS.writeUTF("Directory" + currentFile.getName());
@@ -207,17 +132,21 @@ public class RecursiveFileTransferProtocol {
             }
         }
 
-        // write the bytes of each file inside the folder to the socketDOS
-        for (int i = 0; i < allFilesInFolder.size(); i++) {
-            File currentFile = allFilesInFolder.get(i);
-            if (currentFile.isDirectory()) {
-                // move to the files under this directory
-                continue;
-            } else {
-                FileInputStream fileIS = new FileInputStream(currentFile);
-                byte[] buffer = fileIS.readAllBytes();
-                socketDOS.write(buffer);
-                fileIS.close();
+        while(true) {
+            // write the bytes of each file inside the folder to the socketDOS
+            for (File currentFile : allFilesInFolder) {
+                if (currentFile.isDirectory()) {
+                    // move to the files under this directory
+                } else {
+                    FileInputStream fileIS = new FileInputStream(currentFile);
+                    byte[] buffer = fileIS.readAllBytes();
+                    try {
+                        socketDOS.write(buffer);
+                    } catch (SocketException connectionResetByPeer) {
+                        break;
+                    }
+                    fileIS.close();
+                }
             }
         }
 
@@ -260,16 +189,17 @@ public class RecursiveFileTransferProtocol {
         int filesCount = 0;
         Hashtable<String, Integer> directoryFilesCount = new Hashtable<>();
         File[] directoryFiles = folder.listFiles();
-        for(int i = 0; i < directoryFiles.length; i++){
-            if(directoryFiles[i].isDirectory()){
+        assert directoryFiles != null;
+        for (File directoryFile : directoryFiles) {
+            if (directoryFile.isDirectory()) {
                 filesCount += 1;
-                Hashtable<String, Integer> innerDirectoryFilesCount = directoryFilesCount(directoryFiles[i]);
-                for(Map.Entry<String, Integer> entry:innerDirectoryFilesCount.entrySet()){
+                Hashtable<String, Integer> innerDirectoryFilesCount = directoryFilesCount(directoryFile);
+                for (Map.Entry<String, Integer> entry : innerDirectoryFilesCount.entrySet()) {
                     directoryFilesCount.put(entry.getKey(), entry.getValue());
                 }
-                int innerCount = innerDirectoryFilesCount.get(directoryFiles[i].getName());
+                int innerCount = innerDirectoryFilesCount.get(directoryFile.getName());
                 filesCount += innerCount;
-            }else{
+            } else {
                 filesCount += 1;
             }
         }
