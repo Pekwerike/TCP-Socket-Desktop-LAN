@@ -2,10 +2,9 @@ package FileTransferProtocol.kotlinprotocol
 
 import java.io.*
 import java.net.Socket
-import java.util.Collections.min
 import kotlin.math.min
 
-class KotlinFileTransferProtocolAlphaOne (private val socket : Socket){
+class KotlinFileTransferProtocolAlphaTwo (private val socket : Socket){
 
     fun transferFolder(folder : File){
         val socketOS = socket.getOutputStream()
@@ -14,7 +13,9 @@ class KotlinFileTransferProtocolAlphaOne (private val socket : Socket){
 
         val files = folder.listFiles().toMutableList()
 
+
         socketDOS.writeInt(files.size)
+        socketDOS.writeUTF(folder.name)
 
         files.forEach {
             socketDOS.writeUTF(it.name)
@@ -32,11 +33,13 @@ class KotlinFileTransferProtocolAlphaOne (private val socket : Socket){
         }
     }
 
-    fun receiveFolder(parentFolder : File){
+    fun receiveFolder(baseFolder : File){
         val socketDIS = DataInputStream(BufferedInputStream(socket.getInputStream()))
 
 
         val filesSent = socketDIS.readInt()
+        val parentFolder = File(baseFolder, socketDIS.readUTF())
+
 
         for(i in 0 until filesSent){
             val fileName = socketDIS.readUTF()
@@ -57,4 +60,3 @@ class KotlinFileTransferProtocolAlphaOne (private val socket : Socket){
         }
     }
 }
-
