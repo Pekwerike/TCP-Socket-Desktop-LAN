@@ -1,0 +1,4 @@
+package FileTransferProtocol.kotlinprotocol
+
+class KoltinFileTransferProtocolAlphaThree {
+}

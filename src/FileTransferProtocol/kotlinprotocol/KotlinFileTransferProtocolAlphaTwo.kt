@@ -6,11 +6,12 @@ import kotlin.math.min
 
 class KotlinFileTransferProtocolAlphaTwo (private val socket : Socket){
 
-    fun transferFolder(folder : File){
-        val socketOS = socket.getOutputStream()
-        val socketBOS = BufferedOutputStream(socketOS)
-        val socketDOS = DataOutputStream(socketBOS)
+    val socketOS = socket.getOutputStream()
+    val socketBOS = BufferedOutputStream(socketOS)
+    val socketDOS = DataOutputStream(socketBOS)
+    val socketDIS = DataInputStream(BufferedInputStream(socket.getInputStream()))
 
+    fun transferFolder(folder : File){
         val files = folder.listFiles().toMutableList()
 
 
@@ -18,6 +19,10 @@ class KotlinFileTransferProtocolAlphaTwo (private val socket : Socket){
         socketDOS.writeUTF(folder.name)
 
         files.forEach {
+            if(it.isDirectory){
+                socketDOS.writeUTF(it.name + "Directory")
+                transferFolder(it)
+            }
             socketDOS.writeUTF(it.name)
             socketDOS.writeLong(it.length())
 
@@ -34,18 +39,22 @@ class KotlinFileTransferProtocolAlphaTwo (private val socket : Socket){
     }
 
     fun receiveFolder(baseFolder : File){
-        val socketDIS = DataInputStream(BufferedInputStream(socket.getInputStream()))
 
 
         val filesSent = socketDIS.readInt()
-        val parentFolder = File(baseFolder, socketDIS.readUTF())
 
 
         for(i in 0 until filesSent){
             val fileName = socketDIS.readUTF()
+            if(fileName.endsWith("Directory")){
+                val parentFolder = File(baseFolder, fileName)
+                parentFolder.mkdirs()
+                receiveFolder(parentFolder)
+            }
             var fileLength = socketDIS.readLong()
 
-            val fileToSave = File(parentFolder, fileName)
+            val fileToSave = File(baseFolder, fileName)
+
             val fileOutputStream = FileOutputStream(fileToSave)
             val bufferArray= ByteArray(5_000_000)
 

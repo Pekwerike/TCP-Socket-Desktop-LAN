@@ -4,6 +4,7 @@ import FileTransferProtocol.FoldersFTP;
 import FileTransferProtocol.OptimizedFileTransferProtocol;
 import FileTransferProtocol.GeneralizedFileTransferProtocol;
 import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaOne;
+import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaTwo;
 
 
 import java.io.*;
@@ -26,8 +27,8 @@ public class MainApplication {
 
             File folder1 = getFolder("ZipBolt");
 
-            KotlinFileTransferProtocolAlphaOne kotlinFileTransferProtocolAlphaOne = new KotlinFileTransferProtocolAlphaOne(client);
-            kotlinFileTransferProtocolAlphaOne.transferFolder(folder1);
+            KotlinFileTransferProtocolAlphaTwo kotlinFileTransferProtocolAlphaTwo = new KotlinFileTransferProtocolAlphaTwo(client);
+            kotlinFileTransferProtocolAlphaTwo.transferFolder(folder1);
 
             /*assert client != null;
             FoldersFTP foldersFTP = new FoldersFTP(client);

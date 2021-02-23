@@ -4,6 +4,7 @@ import FileTransferProtocol.FoldersFTP;
 import FileTransferProtocol.OptimizedFileTransferProtocol;
 import FileTransferProtocol.GeneralizedFileTransferProtocol;
 import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaOne;
+import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaTwo;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +23,8 @@ public class ClientMainApplication {
             System.out.println("Connected to server");
 
 
-            KotlinFileTransferProtocolAlphaOne kotlinFileTransferProtocolAlphaOne = new KotlinFileTransferProtocolAlphaOne(server);
-            kotlinFileTransferProtocolAlphaOne.receiveFolder(getVideoFile());
+            KotlinFileTransferProtocolAlphaTwo kotlinFileTransferProtocolAlphaTwo = new KotlinFileTransferProtocolAlphaTwo(server);
+            kotlinFileTransferProtocolAlphaTwo.receiveFolder(getVideoFile());
 
            // OptimizedFileTransferProtocol ftp = new OptimizedFileTransferProtocol(server);
            // GeneralizedFileTransferProtocol generalizedFileTransferProtocol = new GeneralizedFileTransferProtocol(server);
@@ -46,6 +47,6 @@ public class ClientMainApplication {
 
 
     private static File getVideoFile(){
-        return new File("C:\\Users\\Prosper's PC\\Pictures\\ZipBolt");
+        return new File("C:\\Users\\Prosper's PC\\Pictures\\");
     }
 }
