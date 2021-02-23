@@ -137,6 +137,7 @@ public class GeneralizedFileTransferProtocol {
                         break;
                     }
                     fileIS.close();
+                    socketDOS.flush();
                 }
             }
             if (terminate) break;

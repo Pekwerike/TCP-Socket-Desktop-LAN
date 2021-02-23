@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/FileTransferProtocol/FileDTO.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FileTransferProtocol/FoldersFTP.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/GeneralizedFileTransferProtocol.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/GeneralizedFileTransferProtocol.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/FileTransferUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/FileTransferUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/GeneralizedFileTransferProtocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/GeneralizedFileTransferProtocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -31,13 +38,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="C:/ServerSocket" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/FileTransferProtocol" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="FileTransferProtocol" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Prosper's PC\Desktop\Princeton Algorithms\ServerSocket\src\FileTransferProtocol" />
       <recent name="C:\Users\Prosper's PC\Desktop\Princeton Algorithms\ServerSocket\src\Client" />
     </key>
   </component>
@@ -133,46 +145,62 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="400" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1463.783@0.0.1463.783" timestamp="1608145921704" />
+    <state x="633" y="117" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1614107518654">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="633" y="117" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1707.920@0.0.1707.920" timestamp="1614107518654" />
     <state x="462" y="94" key="FileChooserDialogImpl" timestamp="1607973746860">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="462" y="94" key="FileChooserDialogImpl/0.0.1463.783@0.0.1463.783" timestamp="1607973746860" />
-    <state width="1408" height="265" key="GridCell.Tab.0.bottom" timestamp="1608562303063">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state width="1663" height="343" key="GridCell.Tab.0.bottom" timestamp="1614112719625">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1408" height="265" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608562303063" />
-    <state width="1408" height="265" key="GridCell.Tab.0.center" timestamp="1608562303063">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state width="1408" height="265" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608578681282" />
+    <state width="1663" height="343" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1614112719625" />
+    <state width="1663" height="343" key="GridCell.Tab.0.center" timestamp="1614112719625">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1408" height="265" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608562303063" />
-    <state width="1408" height="265" key="GridCell.Tab.0.left" timestamp="1608562303063">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state width="1408" height="265" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608578681282" />
+    <state width="1663" height="343" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1614112719625" />
+    <state width="1663" height="343" key="GridCell.Tab.0.left" timestamp="1614112719624">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1408" height="265" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608562303063" />
-    <state width="1408" height="265" key="GridCell.Tab.0.right" timestamp="1608562303063">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state width="1408" height="265" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608578681281" />
+    <state width="1663" height="343" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1614112719624" />
+    <state width="1663" height="343" key="GridCell.Tab.0.right" timestamp="1614112719625">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1408" height="265" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608562303063" />
-    <state width="1408" height="230" key="GridCell.Tab.1.bottom" timestamp="1608560411618">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state width="1408" height="265" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608578681282" />
+    <state width="1663" height="343" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1614112719625" />
+    <state width="1663" height="300" key="GridCell.Tab.1.bottom" timestamp="1614109835888">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="1408" height="230" key="GridCell.Tab.1.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608560411618" />
-    <state width="1408" height="230" key="GridCell.Tab.1.center" timestamp="1608560411618">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state width="1663" height="300" key="GridCell.Tab.1.bottom/0.0.1707.920@0.0.1707.920" timestamp="1614109835888" />
+    <state width="1663" height="300" key="GridCell.Tab.1.center" timestamp="1614109835887">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="1408" height="230" key="GridCell.Tab.1.center/0.0.1463.783@0.0.1463.783" timestamp="1608560411618" />
-    <state width="1408" height="230" key="GridCell.Tab.1.left" timestamp="1608560411618">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state width="1663" height="300" key="GridCell.Tab.1.center/0.0.1707.920@0.0.1707.920" timestamp="1614109835887" />
+    <state width="1663" height="300" key="GridCell.Tab.1.left" timestamp="1614109835887">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="1408" height="230" key="GridCell.Tab.1.left/0.0.1463.783@0.0.1463.783" timestamp="1608560411618" />
-    <state width="1408" height="230" key="GridCell.Tab.1.right" timestamp="1608560411618">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state width="1663" height="300" key="GridCell.Tab.1.left/0.0.1707.920@0.0.1707.920" timestamp="1614109835887" />
+    <state width="1663" height="300" key="GridCell.Tab.1.right" timestamp="1614109835888">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="1408" height="230" key="GridCell.Tab.1.right/0.0.1463.783@0.0.1463.783" timestamp="1608560411618" />
-    <state x="377" y="180" key="com.intellij.ide.util.TipDialog" timestamp="1608487391911">
+    <state width="1663" height="300" key="GridCell.Tab.1.right/0.0.1707.920@0.0.1707.920" timestamp="1614109835888" />
+    <state x="128" y="0" key="SettingsEditor" timestamp="1612652305618">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state x="377" y="180" key="com.intellij.ide.util.TipDialog/0.0.1463.783@0.0.1463.783" timestamp="1608487391910" />
+    <state x="128" y="0" key="SettingsEditor/0.0.1463.783@0.0.1463.783" timestamp="1612652305617" />
+    <state x="377" y="180" key="com.intellij.ide.util.TipDialog" timestamp="1608574059224">
+      <screen x="0" y="0" width="1463" height="783" />
+    </state>
+    <state x="377" y="180" key="com.intellij.ide.util.TipDialog/0.0.1463.783@0.0.1463.783" timestamp="1608574059224" />
     <state x="331" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1608491028280">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
@@ -189,10 +217,10 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="0" y="0" key="new project wizard/0.0.1463.783@0.0.1463.783" timestamp="1607858420566" />
-    <state x="305" y="173" key="run.anything.popup" timestamp="1608401481341">
+    <state x="305" y="173" key="run.anything.popup" timestamp="1608578179201">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state x="305" y="173" key="run.anything.popup/0.0.1463.783@0.0.1463.783" timestamp="1608401481341" />
+    <state x="305" y="173" key="run.anything.popup/0.0.1463.783@0.0.1463.783" timestamp="1608578179201" />
     <state x="310" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1608146190673">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
@@ -201,10 +229,20 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/GeneralizedFileTransferProtocol.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="9" />
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/FoldersFTP.kt</url>
+          <line>60</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/FoldersFTP.kt</url>
+          <line>20</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/FoldersFTP.kt</url>
+          <line>71</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

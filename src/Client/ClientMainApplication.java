@@ -1,7 +1,9 @@
 package Client;
 
+import FileTransferProtocol.FoldersFTP;
 import FileTransferProtocol.OptimizedFileTransferProtocol;
 import FileTransferProtocol.GeneralizedFileTransferProtocol;
+import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaOne;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,25 +21,22 @@ public class ClientMainApplication {
             }
             System.out.println("Connected to server");
 
-            File video1 = getVideoFile("ANDK L1 01 IntroVideo");
-            File video2 = getVideoFile("L1 03 Dice Roller HSASC V4 V2");
-            File video3 = getVideoFile("L1 06 Creating The Dice Roller Project HS-SC");
-      /*      File video4 = getVideoFile("L1 51 Adding The ImageView SC 1");
-            File video5 = getVideoFile("L1 67 Recap HS-A");
-            File video6 = getVideoFile("L1 55 Student Interview HS");
-            File video7 = getVideoFile("L1 26 Student Interview HS");*/
-            File[] videoCollection = {video1, video2, video3};
 
+            KotlinFileTransferProtocolAlphaOne kotlinFileTransferProtocolAlphaOne = new KotlinFileTransferProtocolAlphaOne(server);
+            kotlinFileTransferProtocolAlphaOne.receiveFolder(getVideoFile());
 
-            OptimizedFileTransferProtocol ftp = new OptimizedFileTransferProtocol(server);
-            GeneralizedFileTransferProtocol generalizedFileTransferProtocol = new GeneralizedFileTransferProtocol(server);
+           // OptimizedFileTransferProtocol ftp = new OptimizedFileTransferProtocol(server);
+           // GeneralizedFileTransferProtocol generalizedFileTransferProtocol = new GeneralizedFileTransferProtocol(server);
+           /*FoldersFTP foldersFTP = new FoldersFTP(server);
+           foldersFTP.receiveFolder(getVideoFile());*/
+
+           /* GeneralizedFileTransferProtocol generalizedFileTransferProtocol = new GeneralizedFileTransferProtocol(server);
             try {
-                //videosMovement.transferVideo(videoCollection);
-               // ftp.optimizedReceiveFile();
                 generalizedFileTransferProtocol.receiveFiles();
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
+
         };
 
         Thread thread = new Thread(runnable);
@@ -46,7 +45,7 @@ public class ClientMainApplication {
     }
 
 
-    private static File getVideoFile(String name){
-        return new File("C:\\Users\\Prosper's PC\\Desktop\\ANROID DEVELOPMENT COURSE\\LESSON 1\\" + name +".mp4");
+    private static File getVideoFile(){
+        return new File("C:\\Users\\Prosper's PC\\Pictures\\ZipBolt");
     }
 }

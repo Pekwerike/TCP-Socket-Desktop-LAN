@@ -30,8 +30,7 @@ public class FileTransferUtils {
         return directoryFilesCount;
     }
 
-    public static ArrayList<File> straightenFolderIntoList
-            (File folder) {
+    public static ArrayList<File> straightenFolderIntoList(File folder) {
         ArrayList<File> filesToReturn = new ArrayList<>();
         File[] filesInThisFolder = folder.listFiles();
         filesToReturn.add(folder);
