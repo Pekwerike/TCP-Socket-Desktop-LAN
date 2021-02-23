@@ -2,8 +2,9 @@ package FileTransferProtocol.kotlinprotocol
 
 import java.io.*
 import java.net.Socket
+import kotlin.math.min
 
-class KoltinFileTransferProtocolAlphaThree(private val socket: Socket) {
+class KotlinFileTransferProtocolAlphaThree(socket: Socket) {
 
     private val socketOS = socket.getOutputStream()
     private val socketBOS = BufferedOutputStream(socketOS)
@@ -48,7 +49,20 @@ class KoltinFileTransferProtocolAlphaThree(private val socket: Socket) {
             if(fileName.endsWith("Directory")){
                 receiveFile(newBaseFolder)
             }
-            val fileLength
+            var fileLength = socketDIS.readLong()
+
+            val fileToSave = File(newBaseFolder, fileName)
+            val fileOutputStream = FileOutputStream(fileToSave)
+            val bufferArray= ByteArray(5_000_000)
+
+            while(fileLength > 0){
+                val bytesRead = socketDIS.read(bufferArray, 0, min(fileLength.toInt(), bufferArray.size))
+                if(bytesRead == -1) break
+                fileOutputStream.write(bufferArray)
+                fileLength -= bytesRead
+            }
+            fileOutputStream.flush()
+            fileOutputStream.close()
         }
     }
 }

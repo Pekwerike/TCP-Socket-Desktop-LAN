@@ -4,6 +4,7 @@ import FileTransferProtocol.FoldersFTP;
 import FileTransferProtocol.OptimizedFileTransferProtocol;
 import FileTransferProtocol.GeneralizedFileTransferProtocol;
 import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaOne;
+import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaThree;
 import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaTwo;
 
 
@@ -13,7 +14,7 @@ import java.net.Socket;
 
 public class MainApplication {
 
-   public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         Runnable runnable = () -> {
             ServerSocket serverSocket = null;
             Socket client = null;
@@ -22,13 +23,14 @@ public class MainApplication {
                 client = serverSocket.accept();
             } catch (IOException e) {
                 e.printStackTrace();
-            };
+            }
+            ;
             System.out.println("Connected to a client socket");
 
             File folder1 = getFolder("ZipBolt");
 
-            KotlinFileTransferProtocolAlphaTwo kotlinFileTransferProtocolAlphaTwo = new KotlinFileTransferProtocolAlphaTwo(client);
-            kotlinFileTransferProtocolAlphaTwo.transferFolder(folder1);
+            KotlinFileTransferProtocolAlphaThree kotlinFileTransferProtocolAlphaThree = new KotlinFileTransferProtocolAlphaThree(client);
+            kotlinFileTransferProtocolAlphaThree.transferFile(folder1);
 
             /*assert client != null;
             FoldersFTP foldersFTP = new FoldersFTP(client);
@@ -49,7 +51,7 @@ public class MainApplication {
     }
 
 
-    private static File getFolder(String name){
-       return new File("C:\\Users\\Prosper's PC\\Desktop\\" + name);
+    private static File getFolder(String name) {
+        return new File("C:\\Users\\Prosper's PC\\Desktop\\" + name);
     }
 }

@@ -4,6 +4,7 @@ import FileTransferProtocol.FoldersFTP;
 import FileTransferProtocol.OptimizedFileTransferProtocol;
 import FileTransferProtocol.GeneralizedFileTransferProtocol;
 import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaOne;
+import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaThree;
 import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaTwo;
 
 import java.io.File;
@@ -16,15 +17,17 @@ public class ClientMainApplication {
         Runnable runnable = () -> {
             Socket server = null;
             try {
-                server = new Socket("192.168.43.190", 8086);
+                server = new Socket(" 192.168.43.190", 8086);
+                System.out.println("Connected to server");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("Connected to server");
 
 
-            KotlinFileTransferProtocolAlphaTwo kotlinFileTransferProtocolAlphaTwo = new KotlinFileTransferProtocolAlphaTwo(server);
-            kotlinFileTransferProtocolAlphaTwo.receiveFolder(getVideoFile());
+
+            assert server != null;
+            KotlinFileTransferProtocolAlphaThree kotlinFileTransferProtocolAlphaThree = new KotlinFileTransferProtocolAlphaThree(server);
+            kotlinFileTransferProtocolAlphaThree.receiveFile(getVideoFile());
 
            // OptimizedFileTransferProtocol ftp = new OptimizedFileTransferProtocol(server);
            // GeneralizedFileTransferProtocol generalizedFileTransferProtocol = new GeneralizedFileTransferProtocol(server);
