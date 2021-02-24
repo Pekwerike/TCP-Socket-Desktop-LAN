@@ -14,6 +14,19 @@ import kotlin.math.min
 
 TransferFile function Pseudocode
 1. Write the name of the folder to the socketDataOutputStream
+2. Write the number of files in the folder to the socketDataOutputStream
+3. For each file in the folder
+3b. Check if the file is a directory
+3c. if 3b is true, append the string "Directory" to the name of the file
+3ci. Then call the transferFile function, passing it the file from 3b i.e GO TO step 1. (Recursion)
+3d. if 3b is false, then
+3di. Write the name of the file to the socketDataOutputStream
+3dii. Write the length of the file to the socketDataOutputStream
+3diii. Write the bytes of the file to the socketDataOutputStream
+3div. GO TO step 3
+
+ReceiveFile function Pseudocode
+1. Read t
 
 
  */
