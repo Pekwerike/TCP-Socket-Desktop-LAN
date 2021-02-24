@@ -7,7 +7,10 @@
       <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/FileDTO.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/FoldersFTP.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaTwo.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,10 +143,11 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="215" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1463.783@0.0.1463.783" timestamp="1608562110155" />
-    <state x="400" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608145921704">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state x="467" y="99" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1614150927252">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="400" y="84" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1463.783@0.0.1463.783" timestamp="1608145921704" />
+    <state x="467" y="99" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1707.920@0.0.1707.920" timestamp="1614150927252" />
     <state x="633" y="117" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1614107518654">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
@@ -152,26 +156,26 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="462" y="94" key="FileChooserDialogImpl/0.0.1463.783@0.0.1463.783" timestamp="1607973746860" />
-    <state width="1663" height="342" key="GridCell.Tab.0.bottom" timestamp="1614150714778">
+    <state width="1663" height="342" key="GridCell.Tab.0.bottom" timestamp="1614150850608">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="1408" height="265" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1608578681282" />
-    <state width="1663" height="342" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1614150714778" />
-    <state width="1663" height="342" key="GridCell.Tab.0.center" timestamp="1614150714778">
+    <state width="1663" height="342" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1614150850608" />
+    <state width="1663" height="342" key="GridCell.Tab.0.center" timestamp="1614150850608">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="1408" height="265" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1608578681282" />
-    <state width="1663" height="342" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1614150714778" />
-    <state width="1663" height="342" key="GridCell.Tab.0.left" timestamp="1614150714777">
+    <state width="1663" height="342" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1614150850608" />
+    <state width="1663" height="342" key="GridCell.Tab.0.left" timestamp="1614150850608">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="1408" height="265" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1608578681281" />
-    <state width="1663" height="342" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1614150714777" />
-    <state width="1663" height="342" key="GridCell.Tab.0.right" timestamp="1614150714778">
+    <state width="1663" height="342" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1614150850608" />
+    <state width="1663" height="342" key="GridCell.Tab.0.right" timestamp="1614150850608">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="1408" height="265" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1608578681282" />
-    <state width="1663" height="342" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1614150714778" />
+    <state width="1663" height="342" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1614150850608" />
     <state width="1663" height="300" key="GridCell.Tab.1.bottom" timestamp="1614109835888">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
@@ -225,26 +229,5 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="310" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1463.783@0.0.1463.783" timestamp="1608146190673" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/FoldersFTP.kt</url>
-          <line>60</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/FoldersFTP.kt</url>
-          <line>20</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/FileTransferProtocol/FoldersFTP.kt</url>
-          <line>71</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

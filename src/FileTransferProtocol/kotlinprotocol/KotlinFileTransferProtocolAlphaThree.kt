@@ -4,6 +4,18 @@ import java.io.*
 import java.net.Socket
 import kotlin.math.min
 
+/*
+ Communication algorithm created by P.C. Ekwerike
+
+ Graphical representation of how the algorithm works and makes data flow in the socket outputstream
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ socketOutputStream ->...folderCount(Int) newFolderName(UTF) nameOfFileInFolder + "Directory" (if file is a directory) |bytesOfFile(Stream of byte array) lengthOfFile(long) nameOfFileInFolder(UTF)| folderCount(Int)  initialFolder(UTF) -> socketInputStream
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ Pseudocode
+
+ */
+
 class KotlinFileTransferProtocolAlphaThree(socket: Socket) {
 
     private val socketOS = socket.getOutputStream()
