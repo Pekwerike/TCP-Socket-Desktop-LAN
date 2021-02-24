@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/FileDTO.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/FoldersFTP.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaTwo.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,10 +213,11 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="0" y="0" key="new project wizard/0.0.1463.783@0.0.1463.783" timestamp="1607858420566" />
-    <state x="305" y="173" key="run.anything.popup" timestamp="1608578179201">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state x="356" y="203" key="run.anything.popup" timestamp="1614151279188">
+      <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="305" y="173" key="run.anything.popup/0.0.1463.783@0.0.1463.783" timestamp="1608578179201" />
+    <state x="356" y="203" key="run.anything.popup/0.0.1707.920@0.0.1707.920" timestamp="1614151279188" />
     <state x="310" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1608146190673">
       <screen x="0" y="0" width="1463" height="783" />
     </state>

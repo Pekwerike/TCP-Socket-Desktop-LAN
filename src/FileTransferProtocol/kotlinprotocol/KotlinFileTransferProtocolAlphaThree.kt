@@ -9,18 +9,18 @@ import kotlin.math.min
 
  Graphical representation of how the algorithm works and makes data flow in the socket outputstream
  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- socketOutputStream ->...folderCount(Int) newFolderName(UTF) nameOfFileInFolder + "Directory" (if file is a directory) |bytesOfFile(Stream of byte array) lengthOfFile(long) nameOfFileInFolder(UTF)| folderCount(Int)  initialFolder(UTF) -> socketInputStream
+ socketOutputStream ->...folderCount(Int) newFolderName(UTF) nameOfFileInFolder + "Directory" (if file is a directory) |bytesOfFile(Stream of byte array) lengthOfFile(long) nameOfFileInFolder(UTF)| folderCount(Int)  initialFolderName(UTF) -> socketInputStream
  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
- Pseudocode
+TransferFile function Pseudocode
+1. Write the name of the folder to the socketDataOutputStream
+
 
  */
 
 class KotlinFileTransferProtocolAlphaThree(socket: Socket) {
 
-    private val socketOS = socket.getOutputStream()
-    private val socketBOS = BufferedOutputStream(socketOS)
-    private val socketDOS = DataOutputStream(socketBOS)
+    private val socketDOS = DataOutputStream(BufferedOutputStream(socket.getOutputStream()))
     private val socketDIS = DataInputStream(BufferedInputStream(socket.getInputStream()))
 
     fun transferFile(baseFolder: File) {
@@ -50,14 +50,14 @@ class KotlinFileTransferProtocolAlphaThree(socket: Socket) {
         }
     }
 
-    fun receiveFile(baseFolder: File){
+    fun receiveFile(baseFolder: File) {
         val newBaseFolderName = socketDIS.readUTF()
         val newBaseFolder = File(baseFolder, newBaseFolderName)
         newBaseFolder.mkdirs()
 
         val numberOfFilesInBaseFolder = socketDIS.readInt()
 
-        for(i in 0 until numberOfFilesInBaseFolder) {
+        for (i in 0 until numberOfFilesInBaseFolder) {
             val fileName = socketDIS.readUTF()
             if (fileName.endsWith("Directory")) {
                 receiveFile(newBaseFolder)
