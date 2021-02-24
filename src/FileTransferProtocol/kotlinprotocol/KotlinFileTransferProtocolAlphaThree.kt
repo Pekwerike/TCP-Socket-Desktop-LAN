@@ -18,22 +18,23 @@ class KotlinFileTransferProtocolAlphaThree(socket: Socket) {
         socketDOS.writeInt(filesInFolder.size)
 
         filesInFolder.forEach { file ->
-            if(file.isDirectory){
+            if (file.isDirectory) {
                 socketDOS.writeUTF(file.name + "Directory")
                 transferFile(file)
+            } else {
+
+                socketDOS.writeUTF(file.name)
+                socketDOS.writeLong(file.length())
+
+                val fileIS = FileInputStream(file)
+                val bufferArray = ByteArray(5_000_000)
+                var lengthRead: Int
+
+                while (fileIS.read(bufferArray).also { lengthRead = it } > 0) {
+                    socketDOS.write(bufferArray, 0, lengthRead)
+                }
+                fileIS.close()
             }
-
-            socketDOS.writeUTF(file.name)
-            socketDOS.writeLong(file.length())
-
-            val fileIS = FileInputStream(file)
-            val bufferArray = ByteArray(5_000_000)
-            var lengthRead : Int
-
-            while(fileIS.read(bufferArray).also { lengthRead = it } > 0){
-                socketDOS.write(bufferArray, 0, lengthRead)
-            }
-            fileIS.close()
         }
     }
 
@@ -44,25 +45,26 @@ class KotlinFileTransferProtocolAlphaThree(socket: Socket) {
 
         val numberOfFilesInBaseFolder = socketDIS.readInt()
 
-        for(i in 0 until numberOfFilesInBaseFolder){
+        for(i in 0 until numberOfFilesInBaseFolder) {
             val fileName = socketDIS.readUTF()
-            if(fileName.endsWith("Directory")){
+            if (fileName.endsWith("Directory")) {
                 receiveFile(newBaseFolder)
-            }
-            var fileLength = socketDIS.readLong()
+            } else {
+                var fileLength = socketDIS.readLong()
 
-            val fileToSave = File(newBaseFolder, fileName)
-            val fileOutputStream = FileOutputStream(fileToSave)
-            val bufferArray= ByteArray(5_000_000)
+                val fileToSave = File(newBaseFolder, fileName)
+                val fileOutputStream = FileOutputStream(fileToSave)
+                val bufferArray = ByteArray(5_000_000)
 
-            while(fileLength > 0){
-                val bytesRead = socketDIS.read(bufferArray, 0, min(fileLength.toInt(), bufferArray.size))
-                if(bytesRead == -1) break
-                fileOutputStream.write(bufferArray)
-                fileLength -= bytesRead
+                while (fileLength > 0) {
+                    val bytesRead = socketDIS.read(bufferArray, 0, min(fileLength.toInt(), bufferArray.size))
+                    if (bytesRead == -1) break
+                    fileOutputStream.write(bufferArray)
+                    fileLength -= bytesRead
+                }
+                fileOutputStream.flush()
+                fileOutputStream.close()
             }
-            fileOutputStream.flush()
-            fileOutputStream.close()
         }
     }
 }

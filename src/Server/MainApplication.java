@@ -1,11 +1,10 @@
 package Server;
 
-import FileTransferProtocol.FoldersFTP;
 import FileTransferProtocol.OptimizedFileTransferProtocol;
 import FileTransferProtocol.GeneralizedFileTransferProtocol;
 import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaOne;
 import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaThree;
-import FileTransferProtocol.kotlinprotocol.KotlinFileTransferProtocolAlphaTwo;
+
 
 
 import java.io.*;
@@ -27,7 +26,7 @@ public class MainApplication {
             ;
             System.out.println("Connected to a client socket");
 
-            File folder1 = getFolder("ZipBolt");
+            File folder1 = getFolder("android-advanced-starter-apps-master");
 
             KotlinFileTransferProtocolAlphaThree kotlinFileTransferProtocolAlphaThree = new KotlinFileTransferProtocolAlphaThree(client);
             kotlinFileTransferProtocolAlphaThree.transferFile(folder1);
