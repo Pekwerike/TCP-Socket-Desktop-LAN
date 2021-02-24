@@ -26,8 +26,20 @@ TransferFile function Pseudocode
 3div. GO TO step 3
 
 ReceiveFile function Pseudocode
-1. Read t
-
+1. Read the name of the folder from the socketDataInputStream as newBaseFolderName
+2. Create a new directory inside the previous baseFolder with the newBaseFolderName
+2. Read the number of the files contained in the newBaseFolder from the socketDataInputStream as numberOfFilesInBaseFolder
+3. for i = 0 -> numberOfFilesInBaseFolder
+3a. Read the name of the file that should be inside the newBaseFolder from the socketDataInputStream
+3b. if fileName ends with "Directory", then
+3bi. Call the receiveFile function again passing it the baseFolder created in step 2
+3c else if fileName doesn't end with "Directory", then
+3ci. Read the length of the file from the socketDataInputStream
+3cii. Create a new file in the base folder using the fileName read at 3a
+3ciii. Read out the file content as bytes from the socketDataInputStream
+3civ. Write the read out content into the file created in 3ciii
+3cv. Close the fileInputStream
+3cvi. GO TO step 3 until i == numberOfFilesInBaseFolder - 1
 
  */
 
