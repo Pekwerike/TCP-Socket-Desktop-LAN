@@ -7,7 +7,7 @@ import kotlin.math.min
 /*
  Communication algorithm created by P.C. Ekwerike
 
- Graphical representation of how the algorithm works and makes data flow in the socket outputstream
+ Graphical representation of how the algorithm works and makes data flow on both ends of the socket stream 
  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  socketOutputStream ->...folderCount(Int) newFolderName(UTF) nameOfFileInFolder + "Directory" (if file is a directory) |bytesOfFile(Stream of byte array) lengthOfFile(long) nameOfFileInFolder(UTF)| folderCount(Int)  initialFolderName(UTF) -> socketInputStream
  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
