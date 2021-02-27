@@ -19,6 +19,7 @@ public class MainApplication {
             Socket client = null;
             try {
                 serverSocket = new ServerSocket(8086);
+
                 client = serverSocket.accept();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -26,10 +27,11 @@ public class MainApplication {
             ;
             System.out.println("Connected to a client socket");
 
-            File folder1 = getFolder("android-advanced-starter-apps-master");
+            File folder1 = getFolder("ZipBolt");
 
             KotlinFileTransferProtocolAlphaThree kotlinFileTransferProtocolAlphaThree = new KotlinFileTransferProtocolAlphaThree(client);
             kotlinFileTransferProtocolAlphaThree.transferFile(folder1);
+            kotlinFileTransferProtocolAlphaThree.receiveFile(getFolder(""));
 
             /*assert client != null;
             FoldersFTP foldersFTP = new FoldersFTP(client);
@@ -51,6 +53,8 @@ public class MainApplication {
 
 
     private static File getFolder(String name) {
+        if(!name.equals(" "))
         return new File("C:\\Users\\Prosper's PC\\Desktop\\" + name);
+        else return new File("C:\\Users\\Prosper's PC\\Desktop");
     }
 }
