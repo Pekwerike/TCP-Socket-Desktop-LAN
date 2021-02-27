@@ -3,19 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/FileDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/FoldersFTP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaOne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaOne.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaTwo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/ExperimentApplication$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/ExperimentApplication$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/ExperimentApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaOne.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaOne.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,25 +147,25 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="462" y="94" key="FileChooserDialogImpl/0.0.1463.783@0.0.1463.783" timestamp="1607973746860" />
-    <state width="1420" height="174" key="GridCell.Tab.0.bottom" timestamp="1614455830143">
+    <state width="1420" height="174" key="GridCell.Tab.0.bottom" timestamp="1614455899959">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1420" height="174" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1614455830143" />
+    <state width="1420" height="174" key="GridCell.Tab.0.bottom/0.0.1463.783@0.0.1463.783" timestamp="1614455899959" />
     <state width="1663" height="342" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1614278551135" />
-    <state width="1420" height="174" key="GridCell.Tab.0.center" timestamp="1614455830143">
+    <state width="1420" height="174" key="GridCell.Tab.0.center" timestamp="1614455899959">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1420" height="174" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1614455830143" />
+    <state width="1420" height="174" key="GridCell.Tab.0.center/0.0.1463.783@0.0.1463.783" timestamp="1614455899959" />
     <state width="1663" height="342" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1614278551135" />
-    <state width="1420" height="174" key="GridCell.Tab.0.left" timestamp="1614455830142">
+    <state width="1420" height="174" key="GridCell.Tab.0.left" timestamp="1614455899958">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1420" height="174" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1614455830142" />
+    <state width="1420" height="174" key="GridCell.Tab.0.left/0.0.1463.783@0.0.1463.783" timestamp="1614455899958" />
     <state width="1663" height="342" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1614278551134" />
-    <state width="1420" height="174" key="GridCell.Tab.0.right" timestamp="1614455830143">
+    <state width="1420" height="174" key="GridCell.Tab.0.right" timestamp="1614455899959">
       <screen x="0" y="0" width="1463" height="783" />
     </state>
-    <state width="1420" height="174" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1614455830143" />
+    <state width="1420" height="174" key="GridCell.Tab.0.right/0.0.1463.783@0.0.1463.783" timestamp="1614455899959" />
     <state width="1663" height="342" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1614278551135" />
     <state width="1663" height="300" key="GridCell.Tab.1.bottom" timestamp="1614109835888">
       <screen x="0" y="0" width="1707" height="920" />
