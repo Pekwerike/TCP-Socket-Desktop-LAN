@@ -27,13 +27,10 @@ class KotlinFileTransferProtocolAlphaOne(private val socket: Socket) {
             val fileIS = FileInputStream(it)
             val bufferArray = ByteArray(10_000_000)
             var lengthRead: Int
-            var totalLengthWritten: Float = 0f
+
 
             while (fileIS.read(bufferArray).also { lengthRead = it } > 0) {
                 socketDOS.write(bufferArray, 0, lengthRead)
-                totalLengthWritten += lengthRead
-
-                System.out.println("Sent ${(totalLengthWritten / it.length().toFloat()) * 100}% of ${it.name}")
             }
             fileIS.close()
         }
@@ -53,13 +50,12 @@ class KotlinFileTransferProtocolAlphaOne(private val socket: Socket) {
             val fileOutputStream = FileOutputStream(fileToSave)
             val bufferArray = ByteArray(10_000_000)
 
-            var totalLengthReceived: Float = 0f
+
             while (fileLength > 0) {
                 try {
                     val bytesRead = socketDIS.read(bufferArray, 0, min(fileLength.toInt(), bufferArray.size))
                     if (bytesRead == -1) break
                     fileOutputStream.write(bufferArray)
-                    System.out.println("Bytes array size is ${bufferArray.get(4_999_999)} and file length is ${fileLength}")
                     fileLength -= bytesRead
                 } catch (connectionReset: SocketException) {
                     break

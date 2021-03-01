@@ -24,25 +24,15 @@ public class MainApplication {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            ;
+
             System.out.println("Connected to a client socket");
 
             File folder1 = getFolder("ZipBolt");
 
             KotlinFileTransferProtocolAlphaThree kotlinFileTransferProtocolAlphaThree = new KotlinFileTransferProtocolAlphaThree(client);
             kotlinFileTransferProtocolAlphaThree.transferFile(folder1);
-            kotlinFileTransferProtocolAlphaThree.receiveFile(getFolder(""));
+         //   kotlinFileTransferProtocolAlphaThree.transferFile(getFolder("Canary"));
 
-            /*assert client != null;
-            FoldersFTP foldersFTP = new FoldersFTP(client);
-            foldersFTP.transferFolder(folder1);*/
-
-           /* GeneralizedFileTransferProtocol generalizedFileTransferProtocol = new GeneralizedFileTransferProtocol(client);
-            try {
-                generalizedFileTransferProtocol.transferFiles(folder1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
 
         };
 

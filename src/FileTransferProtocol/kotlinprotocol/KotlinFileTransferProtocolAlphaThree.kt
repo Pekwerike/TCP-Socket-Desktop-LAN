@@ -45,7 +45,7 @@ ReceiveFile function Pseudocode
 
 class KotlinFileTransferProtocolAlphaThree(socket: Socket) {
 
-    private val socketDOS = DataOutputStream(BufferedOutputStream(socket.getOutputStream()))
+    val socketDOS = DataOutputStream(BufferedOutputStream(socket.getOutputStream()))
     private val socketDIS = DataInputStream(BufferedInputStream(socket.getInputStream()))
 
     fun transferFile(baseFolder: File) {
@@ -75,7 +75,9 @@ class KotlinFileTransferProtocolAlphaThree(socket: Socket) {
         }
     }
 
-    fun receiveFile(baseFolder: File) {
+
+
+   fun receiveFile(baseFolder: File) {
         val newBaseFolderName = socketDIS.readUTF()
         val newBaseFolder = File(baseFolder, newBaseFolderName)
         newBaseFolder.mkdirs()
