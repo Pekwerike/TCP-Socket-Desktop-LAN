@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="02b3e957-6aa9-4482-b008-bcdb748d8526" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Client/ClientMainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaOne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaOne.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TCPSocketDesktopLAN/Server/MainApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientMainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaOne.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaOne.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileTransferProtocol/kotlinprotocol/KotlinFileTransferProtocolAlphaThree.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MainApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,9 +191,10 @@
       <screen x="0" y="0" width="1463" height="783" />
     </state>
     <state x="128" y="0" key="SettingsEditor/0.0.1463.783@0.0.1463.783" timestamp="1612652305617" />
-    <state x="377" y="180" key="com.intellij.ide.util.TipDialog" timestamp="1614590465856">
-      <screen x="0" y="0" width="1463" height="783" />
+    <state x="330" y="156" key="com.intellij.ide.util.TipDialog" timestamp="1615215270342">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="330" y="156" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1615215270342" />
     <state x="377" y="180" key="com.intellij.ide.util.TipDialog/0.0.1463.783@0.0.1463.783" timestamp="1614590465856" />
     <state x="440" y="211" key="com.intellij.ide.util.TipDialog/0.0.1707.920@0.0.1707.920" timestamp="1614186071911" />
     <state x="331" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1608491028280">
